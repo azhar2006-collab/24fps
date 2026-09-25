@@ -38,6 +38,7 @@
       <li><a href="#approach">Approach</a></li>
       <li><a href="#why">Why Us</a></li>
       <li><a href="#vision">Vision</a></li>
+      <li><a href="#reel">Reel</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Get Started</a>
@@ -790,7 +791,7 @@
           </div>
         </div>
         <div class="contact-social">
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
           <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
           <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
           <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -830,6 +831,218 @@
           <i class="fas fa-paper-plane"></i> Send Message
         </button>
       </form>
+    </div>
+  </section>
+
+  <!-- FEATURED REEL SECTION -->
+  <section class="reel-section" id="reel">
+    <div class="reel-bg">
+      <div class="film-grain"></div>
+      <div class="scanlines"></div>
+      <div class="reel-ambient-glow"></div>
+    </div>
+
+    <div class="section-header" style="text-align:center; margin-bottom: 2rem;">
+      <span class="section-tag">
+        <span class="tag-dot"></span> FEATURED PRODUCTIONS
+      </span>
+      <h2 class="section-title">Watch Us In <span class="gradient-text">Action</span></h2>
+      <p class="section-subtitle">Cinematic visual stories created for our marquee partners.</p>
+      
+      <!-- Top Control Bar: Layout Orientation & Master Sound Toggle -->
+      <div class="reels-top-controls">
+        <div class="reels-mode-group">
+          <span class="control-label"><i class="fas fa-sliders"></i> VIEW MODE:</span>
+          <button class="mode-btn active" id="btnModeHorizontal" onclick="setReelsMode('horizontal')" title="Horizontal Widescreen Layout">
+            <i class="fas fa-film"></i> Horizontal (16:9)
+          </button>
+          <button class="mode-btn" id="btnModeVertical" onclick="setReelsMode('vertical')" title="Vertical Portrait Layout">
+            <i class="fas fa-mobile-screen"></i> Vertical (9:16)
+          </button>
+        </div>
+
+        <button class="master-mic-btn" id="masterMicBtn" onclick="toggleAllReelsMic()" title="Toggle mic/sound across all reels">
+          <i class="fas fa-microphone-slash" id="masterMicIcon"></i>
+          <span id="masterMicLabel">ALL MICS: MUTED</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Horizontal Carousel Container -->
+    <div class="reels-carousel-container">
+      <!-- Left Arrow -->
+      <button class="reels-nav-arrow arrow-left" id="reelPrevBtn" onclick="scrollReels(-1)" aria-label="Previous Video">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <!-- Horizontal Scrolling Track -->
+      <div class="reels-carousel-track" id="reelsTrack">
+
+        <!-- Reel 1: 77 Fitness Studio -->
+        <div class="reel-card horizontal-mode" data-reel-id="reel1">
+          <div class="reel-camera-hud">
+            <span class="hud-tag rec-tag"><span class="rec-blink"></span> REC</span>
+            <span class="hud-tag fps-tag">24.000 FPS</span>
+            <span class="hud-tag tc-tag">00:01:25:12</span>
+            <span class="hud-tag aspect-tag">16:9 DCI</span>
+          </div>
+
+          <div class="reel-media-wrapper">
+            <video class="reel-video-player" id="video_reel1" src="reel1.mp4" playsinline loop autoplay muted preload="metadata"></video>
+            <div class="reel-video-overlay" onclick="togglePlayPause('video_reel1')">
+              <div class="play-indicator"><i class="fas fa-play"></i></div>
+            </div>
+            <!-- Individual Mic Button Overlay -->
+            <button class="reel-mic-btn" onclick="toggleReelMic('video_reel1', this)" title="Turn Mic / Sound On & Off">
+              <i class="fas fa-microphone-slash"></i>
+              <span class="mic-text">MIC OFF</span>
+              <span class="sound-wave"><span></span><span></span><span></span></span>
+            </button>
+          </div>
+
+          <div class="reel-card-meta">
+            <div class="reel-title-row">
+              <h4 class="reel-heading">77 Fitness Studio</h4>
+              <span class="reel-client-tag">Commercial</span>
+            </div>
+            <p class="reel-caption">Star testimonials & elite equipment workout campaign.</p>
+            <div class="reel-actions">
+              <a href="https://www.instagram.com/reel/DS49NbeCYUl/" target="_blank" rel="noopener noreferrer" class="reel-ig-link">
+                <i class="fab fa-instagram"></i> View on Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 2: 77 Fitness Studio Vadapalani Launch -->
+        <div class="reel-card horizontal-mode" data-reel-id="reel2">
+          <div class="reel-camera-hud">
+            <span class="hud-tag rec-tag"><span class="rec-blink"></span> REC</span>
+            <span class="hud-tag fps-tag">24.000 FPS</span>
+            <span class="hud-tag tc-tag">00:00:45:00</span>
+            <span class="hud-tag aspect-tag">16:9 DCI</span>
+          </div>
+
+          <div class="reel-media-wrapper">
+            <iframe
+              src="https://www.instagram.com/reel/DUqHSRREdTU/embed/"
+              class="reel-iframe-player"
+              frameborder="0" scrolling="no" allowtransparency="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              title="77 Fitness Studio Vadapalani Grand Launch"
+            ></iframe>
+            <button class="reel-mic-btn" onclick="toggleIframeSound(this)" title="Turn Mic / Sound On & Off">
+              <i class="fas fa-microphone"></i>
+              <span class="mic-text">MIC ON</span>
+              <span class="sound-wave active"><span></span><span></span><span></span></span>
+            </button>
+          </div>
+
+          <div class="reel-card-meta">
+            <div class="reel-title-row">
+              <h4 class="reel-heading">Grand Launch Vadapalani</h4>
+              <span class="reel-client-tag">Brand Film</span>
+            </div>
+            <p class="reel-caption">The Grand Launch campaign — built different, new energy.</p>
+            <div class="reel-actions">
+              <a href="https://www.instagram.com/reel/DUqHSRREdTU/" target="_blank" rel="noopener noreferrer" class="reel-ig-link">
+                <i class="fab fa-instagram"></i> View on Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 3: Commercial Production -->
+        <div class="reel-card horizontal-mode" data-reel-id="reel3">
+          <div class="reel-camera-hud">
+            <span class="hud-tag rec-tag"><span class="rec-blink"></span> REC</span>
+            <span class="hud-tag fps-tag">24.000 FPS</span>
+            <span class="hud-tag tc-tag">00:00:28:18</span>
+            <span class="hud-tag aspect-tag">16:9 DCI</span>
+          </div>
+
+          <div class="reel-media-wrapper">
+            <video class="reel-video-player" id="video_reel3" src="reel3.mp4" playsinline loop autoplay muted preload="metadata"></video>
+            <div class="reel-video-overlay" onclick="togglePlayPause('video_reel3')">
+              <div class="play-indicator"><i class="fas fa-play"></i></div>
+            </div>
+            <button class="reel-mic-btn" onclick="toggleReelMic('video_reel3', this)" title="Turn Mic / Sound On & Off">
+              <i class="fas fa-microphone-slash"></i>
+              <span class="mic-text">MIC OFF</span>
+              <span class="sound-wave"><span></span><span></span><span></span></span>
+            </button>
+          </div>
+
+          <div class="reel-card-meta">
+            <div class="reel-title-row">
+              <h4 class="reel-heading">Creative Showcase 01</h4>
+              <span class="reel-client-tag">Visuals</span>
+            </div>
+            <p class="reel-caption">High-impact dynamic commercial edit by 24 FPS.</p>
+            <div class="reel-actions">
+              <a href="https://www.instagram.com/reel/C9XP0_jv8Qq/" target="_blank" rel="noopener noreferrer" class="reel-ig-link">
+                <i class="fab fa-instagram"></i> View on Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 4: Visuals & Motion -->
+        <div class="reel-card horizontal-mode" data-reel-id="reel4">
+          <div class="reel-camera-hud">
+            <span class="hud-tag rec-tag"><span class="rec-blink"></span> REC</span>
+            <span class="hud-tag fps-tag">24.000 FPS</span>
+            <span class="hud-tag tc-tag">00:00:25:06</span>
+            <span class="hud-tag aspect-tag">16:9 DCI</span>
+          </div>
+
+          <div class="reel-media-wrapper">
+            <video class="reel-video-player" id="video_reel4" src="reel4.mp4" playsinline loop autoplay muted preload="metadata"></video>
+            <div class="reel-video-overlay" onclick="togglePlayPause('video_reel4')">
+              <div class="play-indicator"><i class="fas fa-play"></i></div>
+            </div>
+            <button class="reel-mic-btn" onclick="toggleReelMic('video_reel4', this)" title="Turn Mic / Sound On & Off">
+              <i class="fas fa-microphone-slash"></i>
+              <span class="mic-text">MIC OFF</span>
+              <span class="sound-wave"><span></span><span></span><span></span></span>
+            </button>
+          </div>
+
+          <div class="reel-card-meta">
+            <div class="reel-title-row">
+              <h4 class="reel-heading">Creative Showcase 02</h4>
+              <span class="reel-client-tag">Cinematography</span>
+            </div>
+            <p class="reel-caption">Stylized grading and sound sync crafted for social impact.</p>
+            <div class="reel-actions">
+              <a href="https://www.instagram.com/reel/C76p6gBp0Jd/" target="_blank" rel="noopener noreferrer" class="reel-ig-link">
+                <i class="fab fa-instagram"></i> View on Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.reels-carousel-track -->
+
+      <!-- Right Arrow -->
+      <button class="reels-nav-arrow arrow-right" id="reelNextBtn" onclick="scrollReels(1)" aria-label="Next Video">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div><!-- /.reels-carousel-container -->
+
+    <!-- Scroll Track Indicator Dots -->
+    <div class="reels-indicator-bar" id="reelsIndicators">
+      <span class="indicator-dot active" onclick="scrollToReel(0)"></span>
+      <span class="indicator-dot" onclick="scrollToReel(1)"></span>
+      <span class="indicator-dot" onclick="scrollToReel(2)"></span>
+      <span class="indicator-dot" onclick="scrollToReel(3)"></span>
+    </div>
+
+    <!-- Company Instagram CTA -->
+    <div class="reel-cta-row" style="margin-top: 2rem;">
+      <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer" class="btn-primary reel-ig-btn">
+        <i class="fab fa-instagram"></i> Follow @24fpsproduction.in on Instagram
+      </a>
     </div>
   </section>
 
@@ -887,3 +1100,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
