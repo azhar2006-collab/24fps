@@ -859,4 +859,181 @@
     });
   });
 
+  /* ============================================================
+     FEATURED REELS CONTROLLER: HORIZONTAL SCROLL & MIC TOGGLE
+     ============================================================ */
+  window.toggleReelMic = function(videoId, btnEl) {
+    const video = document.getElementById(videoId);
+    if (!video) return;
+
+    const isMuted = video.muted;
+    if (isMuted) {
+      // Unmute
+      video.muted = false;
+      video.volume = 1.0;
+      if (btnEl) {
+        btnEl.classList.add('mic-active');
+        const micIcon = btnEl.querySelector('i');
+        if (micIcon) micIcon.className = 'fas fa-microphone';
+        const micText = btnEl.querySelector('.mic-text');
+        if (micText) micText.textContent = 'MIC ON';
+        const wave = btnEl.querySelector('.sound-wave');
+        if (wave) wave.classList.add('active');
+      }
+    } else {
+      // Mute
+      video.muted = true;
+      if (btnEl) {
+        btnEl.classList.remove('mic-active');
+        const micIcon = btnEl.querySelector('i');
+        if (micIcon) micIcon.className = 'fas fa-microphone-slash';
+        const micText = btnEl.querySelector('.mic-text');
+        if (micText) micText.textContent = 'MIC OFF';
+        const wave = btnEl.querySelector('.sound-wave');
+        if (wave) wave.classList.remove('active');
+      }
+    }
+  };
+
+  window.toggleAllReelsMic = function() {
+    const masterBtn = document.getElementById('masterMicBtn');
+    const masterIcon = document.getElementById('masterMicIcon');
+    const masterLabel = document.getElementById('masterMicLabel');
+    const allVideos = document.querySelectorAll('.reel-video-player');
+    const allMicBtns = document.querySelectorAll('.reel-mic-btn');
+
+    let anyUnmuted = false;
+    allVideos.forEach(v => {
+      if (!v.muted) anyUnmuted = true;
+    });
+
+    const targetMuted = anyUnmuted;
+
+    allVideos.forEach(v => {
+      v.muted = targetMuted;
+      if (!targetMuted) {
+        v.volume = 1.0;
+        v.play().catch(() => {});
+      }
+    });
+
+    allMicBtns.forEach(btn => {
+      const micIcon = btn.querySelector('i');
+      const micText = btn.querySelector('.mic-text');
+      const wave = btn.querySelector('.sound-wave');
+      if (!targetMuted) {
+        btn.classList.add('mic-active');
+        if (micIcon) micIcon.className = 'fas fa-microphone';
+        if (micText) micText.textContent = 'MIC ON';
+        if (wave) wave.classList.add('active');
+      } else {
+        btn.classList.remove('mic-active');
+        if (micIcon) micIcon.className = 'fas fa-microphone-slash';
+        if (micText) micText.textContent = 'MIC OFF';
+        if (wave) wave.classList.remove('active');
+      }
+    });
+
+    if (masterBtn && masterIcon && masterLabel) {
+      if (!targetMuted) {
+        masterBtn.classList.add('active');
+        masterIcon.className = 'fas fa-microphone';
+        masterLabel.textContent = 'ALL MICS: LIVE';
+      } else {
+        masterBtn.classList.remove('active');
+        masterIcon.className = 'fas fa-microphone-slash';
+        masterLabel.textContent = 'ALL MICS: MUTED';
+      }
+    }
+  };
+
+  window.togglePlayPause = function(videoId) {
+    const video = document.getElementById(videoId);
+    if (!video) return;
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  };
+
+  window.toggleIframeSound = function(btnEl) {
+    if (!btnEl) return;
+    const isMuted = !btnEl.classList.contains('mic-active');
+    if (isMuted) {
+      btnEl.classList.add('mic-active');
+      const micIcon = btnEl.querySelector('i');
+      if (micIcon) micIcon.className = 'fas fa-microphone';
+      const micText = btnEl.querySelector('.mic-text');
+      if (micText) micText.textContent = 'MIC ON';
+      const wave = btnEl.querySelector('.sound-wave');
+      if (wave) wave.classList.add('active');
+    } else {
+      btnEl.classList.remove('mic-active');
+      const micIcon = btnEl.querySelector('i');
+      if (micIcon) micIcon.className = 'fas fa-microphone-slash';
+      const micText = btnEl.querySelector('.mic-text');
+      if (micText) micText.textContent = 'MIC OFF';
+      const wave = btnEl.querySelector('.sound-wave');
+      if (wave) wave.classList.remove('active');
+    }
+  };
+
+  window.setReelsMode = function(mode) {
+    const cards = document.querySelectorAll('.reel-card');
+    const btnH = document.getElementById('btnModeHorizontal');
+    const btnV = document.getElementById('btnModeVertical');
+
+    if (mode === 'horizontal') {
+      cards.forEach(c => {
+        c.classList.remove('vertical-mode');
+        c.classList.add('horizontal-mode');
+      });
+      if (btnH) btnH.classList.add('active');
+      if (btnV) btnV.classList.remove('active');
+    } else {
+      cards.forEach(c => {
+        c.classList.remove('horizontal-mode');
+        c.classList.add('vertical-mode');
+      });
+      if (btnV) btnV.classList.add('active');
+      if (btnH) btnH.classList.remove('active');
+    }
+  };
+
+  window.scrollReels = function(direction) {
+    const track = document.getElementById('reelsTrack');
+    if (!track) return;
+    const card = track.querySelector('.reel-card');
+    const step = card ? card.offsetWidth + 32 : 450;
+    track.scrollBy({ left: direction * step, behavior: 'smooth' });
+  };
+
+  window.scrollToReel = function(index) {
+    const track = document.getElementById('reelsTrack');
+    if (!track) return;
+    const cards = track.querySelectorAll('.reel-card');
+    if (cards[index]) {
+      cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  };
+
+  // Sync scroll indicator dots
+  const reelsTrackEl = document.getElementById('reelsTrack');
+  const indicatorDots = document.querySelectorAll('.reels-indicator-bar .indicator-dot');
+  if (reelsTrackEl && indicatorDots.length > 0) {
+    reelsTrackEl.addEventListener('scroll', () => {
+      const cards = reelsTrackEl.querySelectorAll('.reel-card');
+      const trackCenter = reelsTrackEl.scrollLeft + reelsTrackEl.offsetWidth / 2;
+      cards.forEach((card, idx) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        if (Math.abs(trackCenter - cardCenter) < card.offsetWidth / 2) {
+          indicatorDots.forEach(d => d.classList.remove('active'));
+          if (indicatorDots[idx]) indicatorDots[idx].classList.add('active');
+        }
+      });
+    });
+  }
+
 })();
+
