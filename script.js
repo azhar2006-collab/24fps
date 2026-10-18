@@ -1,5 +1,5 @@
 /**
- * 24FPS PRODUCTION — Premium Lifestyle & Fitness Digital Marketing Agency
+ * 24FPS PRODUCTION — Netflix India Recreated Agency Website
  * Vanilla JavaScript (ES6+) — Zero Frameworks, Production Quality
  */
 
@@ -7,233 +7,201 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   /* --------------------------------------------------------------------------
-     1. NAVIGATION SCROLL & ACTIVE STATE
+     1. HEADER SCROLL EFFECT
      -------------------------------------------------------------------------- */
-  const siteHeader = document.getElementById('siteHeader');
-  const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
-  const sections = document.querySelectorAll('section[id], header[id]');
-
-  const handleHeaderScroll = () => {
+  const header = document.getElementById('nfHeader');
+  const handleScroll = () => {
     if (window.scrollY > 40) {
-      siteHeader.classList.add('scrolled');
+      header.classList.add('scrolled');
     } else {
-      siteHeader.classList.remove('scrolled');
+      header.classList.remove('scrolled');
     }
   };
-
-  window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-  handleHeaderScroll();
-
-  // Scrollspy: Highlight nav items on scroll
-  const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -70% 0px',
-    threshold: 0
-  };
-
-  const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
-      }
-    });
-  }, observerOptions);
-
-  sections.forEach(section => {
-    navObserver.observe(section);
-  });
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 
   /* --------------------------------------------------------------------------
-     2. MOBILE DRAWER NAVIGATION
+     2. MOBILE MENU TOGGLE
      -------------------------------------------------------------------------- */
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileNav = document.getElementById('mobileNav');
-  const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-  const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-drawer-footer a');
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.nf-mobile-nav-link, .nf-mobile-footer a');
 
-  const openMobileNav = () => {
-    mobileNav.classList.add('open');
-    mobileNavOverlay.classList.add('open');
-    mobileMenuBtn.classList.add('active');
-    mobileMenuBtn.setAttribute('aria-expanded', 'true');
-    mobileNav.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeMobileNav = () => {
-    mobileNav.classList.remove('open');
-    mobileNavOverlay.classList.remove('open');
-    mobileMenuBtn.classList.remove('active');
-    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    mobileNav.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  };
-
-  if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', () => {
-      const isOpen = mobileNav.classList.contains('open');
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
       if (isOpen) {
-        closeMobileNav();
+        mobileMenu.classList.remove('open');
+        mobileToggle.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
       } else {
-        openMobileNav();
+        mobileMenu.classList.add('open');
+        mobileToggle.classList.add('active');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
       }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        mobileToggle.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      });
     });
   }
 
-  if (mobileCloseBtn) {
-    mobileCloseBtn.addEventListener('click', closeMobileNav);
-  }
-
-  if (mobileNavOverlay) {
-    mobileNavOverlay.addEventListener('click', closeMobileNav);
-  }
-
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', closeMobileNav);
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) {
-      closeMobileNav();
-    }
-  });
-
   /* --------------------------------------------------------------------------
-     3. HERO VIDEO & SOUND (MIC ON / OFF)
+     3. HERO VIDEO SOUND TOGGLE (MIC ON / OFF)
      -------------------------------------------------------------------------- */
   const heroVideo = document.getElementById('heroVideo');
-  const heroAudioToggle = document.getElementById('heroAudioToggle');
-  const heroAudioLabel = document.getElementById('heroAudioLabel');
+  const heroSoundToggle = document.getElementById('heroSoundToggle');
+  const heroSoundLabel = document.getElementById('heroSoundLabel');
 
-  if (heroVideo && heroAudioToggle) {
-    heroAudioToggle.addEventListener('click', () => {
-      // Toggle muted
+  if (heroVideo && heroSoundToggle) {
+    heroSoundToggle.addEventListener('click', () => {
       if (heroVideo.muted) {
         heroVideo.muted = false;
-        heroAudioToggle.classList.add('active');
-        if (heroAudioLabel) heroAudioLabel.textContent = 'Mute Sound';
-        
-        // Mute any other playing case studies
-        muteAllOtherVideos(heroVideo);
+        heroSoundToggle.classList.add('active');
+        if (heroSoundLabel) heroSoundLabel.textContent = 'Mute Reel';
+        muteAllPortfolioVideos();
       } else {
         heroVideo.muted = true;
-        heroAudioToggle.classList.remove('active');
-        if (heroAudioLabel) heroAudioLabel.textContent = 'Unmute Sound';
+        heroSoundToggle.classList.remove('active');
+        if (heroSoundLabel) heroSoundLabel.textContent = 'Unmute Reel';
       }
     });
   }
 
   /* --------------------------------------------------------------------------
-     4. CASE STUDY VIDEO PLAYERS & MIC SOUND TOGGLES
-     (Requirement: "make vidoes with mic on and off sound and the videos should be horizontal")
+     4. HERO QUICK FORM -> PREFILL CONTACT BRIEF
      -------------------------------------------------------------------------- */
-  const playPauseBtns = document.querySelectorAll('.play-pause-btn');
-  const micToggleBtns = document.querySelectorAll('.mic-toggle-btn');
-  const caseVideos = document.querySelectorAll('.case-video');
+  const heroEmailForm = document.getElementById('heroEmailForm');
+  const heroEmailInput = document.getElementById('heroEmailInput');
+  const contactEmailInput = document.getElementById('contactEmail');
 
-  const muteAllOtherVideos = (currentActiveVideo) => {
-    // If hero video is unmuted and current isn't hero, mute hero
-    if (heroVideo && heroVideo !== currentActiveVideo && !heroVideo.muted) {
-      heroVideo.muted = true;
-      if (heroAudioToggle) heroAudioToggle.classList.remove('active');
-      if (heroAudioLabel) heroAudioLabel.textContent = 'Unmute Sound';
-    }
-
-    // Mute all other case study videos
-    caseVideos.forEach(v => {
-      if (v !== currentActiveVideo) {
-        v.muted = true;
-        const parentCard = v.closest('.case-card');
-        if (parentCard) {
-          const micBtn = parentCard.querySelector('.mic-toggle-btn');
-          const micLabel = parentCard.querySelector('.mic-status-label');
-          if (micBtn) micBtn.classList.remove('live');
-          if (micLabel) micLabel.textContent = 'Mic: Off';
+  if (heroEmailForm) {
+    heroEmailForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const enteredEmail = heroEmailInput.value.trim();
+      if (enteredEmail && contactEmailInput) {
+        contactEmailInput.value = enteredEmail;
+        // Trigger floating label state
+        contactEmailInput.dispatchEvent(new Event('input'));
+      }
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+        if (contactEmailInput) {
+          setTimeout(() => contactEmailInput.focus(), 600);
         }
       }
     });
+  }
+
+  /* --------------------------------------------------------------------------
+     5. PORTFOLIO VIDEOS & MIC SOUND CONTROLS (HORIZONTAL 16:9)
+     -------------------------------------------------------------------------- */
+  const portfolioVideos = document.querySelectorAll('.nf-portfolio-video');
+  const playBtns = document.querySelectorAll('.nf-play-btn');
+  const micBtns = document.querySelectorAll('.nf-mic-btn');
+
+  const muteAllPortfolioVideos = () => {
+    portfolioVideos.forEach(v => {
+      v.muted = true;
+      const card = v.closest('.nf-portfolio-card');
+      if (card) {
+        const mic = card.querySelector('.nf-mic-btn');
+        const label = card.querySelector('.mic-label');
+        if (mic) mic.classList.remove('live');
+        if (label) label.textContent = 'Mic: Off';
+      }
+    });
   };
 
-  // Set default case videos to muted
-  caseVideos.forEach(video => {
-    video.muted = true;
+  portfolioVideos.forEach(v => {
+    v.muted = true;
 
-    // Toggle on video surface click
-    video.addEventListener('click', () => {
-      togglePlayVideo(video);
+    v.addEventListener('click', () => {
+      toggleVideoPlay(v);
     });
 
-    video.addEventListener('play', () => {
-      const parentCard = video.closest('.case-card');
-      if (parentCard) {
-        const btn = parentCard.querySelector('.play-pause-btn');
+    v.addEventListener('play', () => {
+      const card = v.closest('.nf-portfolio-card');
+      if (card) {
+        const btn = card.querySelector('.nf-play-btn');
         if (btn) btn.classList.add('playing');
       }
     });
 
-    video.addEventListener('pause', () => {
-      const parentCard = video.closest('.case-card');
-      if (parentCard) {
-        const btn = parentCard.querySelector('.play-pause-btn');
+    v.addEventListener('pause', () => {
+      const card = v.closest('.nf-portfolio-card');
+      if (card) {
+        const btn = card.querySelector('.nf-play-btn');
         if (btn) btn.classList.remove('playing');
       }
     });
   });
 
-  const togglePlayVideo = (video) => {
+  const toggleVideoPlay = (video) => {
     if (video.paused) {
-      video.play().catch(err => {
-        console.warn('Playback restricted or prevented:', err);
-      });
+      video.play().catch(err => console.warn('Autoplay prevented:', err));
     } else {
       video.pause();
     }
   };
 
-  // Play / Pause Buttons
-  playPauseBtns.forEach(btn => {
+  playBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const targetId = btn.getAttribute('data-target');
       const video = document.getElementById(targetId);
       if (video) {
-        togglePlayVideo(video);
+        toggleVideoPlay(video);
       }
     });
   });
 
-  // Mic (Sound On/Off) Buttons
-  micToggleBtns.forEach(btn => {
+  micBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const targetId = btn.getAttribute('data-target');
       const video = document.getElementById(targetId);
-      const label = btn.querySelector('.mic-status-label');
+      const label = btn.querySelector('.mic-label');
 
       if (video) {
         if (video.muted) {
-          // Unmute sound
+          // If hero video is unmuted, mute it
+          if (heroVideo && !heroVideo.muted) {
+            heroVideo.muted = true;
+            if (heroSoundToggle) heroSoundToggle.classList.remove('active');
+            if (heroSoundLabel) heroSoundLabel.textContent = 'Unmute Reel';
+          }
+
+          // Mute other portfolio videos
+          portfolioVideos.forEach(otherVideo => {
+            if (otherVideo !== video) {
+              otherVideo.muted = true;
+              const card = otherVideo.closest('.nf-portfolio-card');
+              if (card) {
+                const otherMic = card.querySelector('.nf-mic-btn');
+                const otherLabel = card.querySelector('.mic-label');
+                if (otherMic) otherMic.classList.remove('live');
+                if (otherLabel) otherLabel.textContent = 'Mic: Off';
+              }
+            }
+          });
+
           video.muted = false;
           btn.classList.add('live');
-          if (label) label.textContent = 'Mic: Live';
+          if (label) label.textContent = 'Mic: On';
 
-          // If the video was paused, start playback so user hears sound
           if (video.paused) {
             video.play().catch(err => console.warn(err));
           }
-
-          // Mute other videos so sounds don't overlap
-          muteAllOtherVideos(video);
         } else {
-          // Mute sound
           video.muted = true;
           btn.classList.remove('live');
           if (label) label.textContent = 'Mic: Off';
@@ -243,143 +211,138 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* --------------------------------------------------------------------------
-     5. SCROLL REVEAL ANIMATIONS (IntersectionObserver)
+     6. NETFLIX FAQ ACCORDION
      -------------------------------------------------------------------------- */
-  const revealElements = document.querySelectorAll('.reveal');
+  const faqItems = document.querySelectorAll('.nf-faq-item');
 
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
+  faqItems.forEach(item => {
+    const questionBtn = item.querySelector('.nf-faq-question');
+    const answer = item.querySelector('.nf-faq-answer');
+
+    if (questionBtn && answer) {
+      questionBtn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+
+        // Close all other items (standard Netflix behavior)
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('open')) {
+            otherItem.classList.remove('open');
+            const otherBtn = otherItem.querySelector('.nf-faq-question');
+            const otherAns = otherItem.querySelector('.nf-faq-answer');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            if (otherAns) otherAns.style.maxHeight = null;
+          }
+        });
+
+        if (isOpen) {
+          item.classList.remove('open');
+          questionBtn.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = null;
+        } else {
+          item.classList.add('open');
+          questionBtn.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
         }
       });
-    }, {
-      root: null,
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-  } else {
-    // Fallback if IntersectionObserver isn't supported
-    revealElements.forEach(el => el.classList.add('active'));
-  }
+    }
+  });
 
   /* --------------------------------------------------------------------------
-     6. GROWTH ENQUIRY FORM VALIDATION & HANDLING
+     7. CONTACT FORM VALIDATION & HANDLING
      -------------------------------------------------------------------------- */
-  const growthForm = document.getElementById('growthContactForm');
-  const formFeedback = document.getElementById('formFeedback');
-  const submitBtn = document.getElementById('submitBtn');
+  const contactForm = document.getElementById('contactForm');
+  const formNotice = document.getElementById('formNotice');
+  const submitBtn = document.getElementById('formSubmitBtn');
 
-  if (growthForm) {
+  if (contactForm) {
     const fields = {
-      fullName: {
-        el: document.getElementById('fullName'),
-        errorEl: document.getElementById('fullNameError'),
-        validate: (val) => val.trim().length >= 2 ? '' : 'Please enter your full name.'
+      name: {
+        input: document.getElementById('contactName'),
+        error: document.getElementById('nameError'),
+        check: val => val.trim().length >= 2 ? '' : 'Please enter your full name.'
       },
       email: {
-        el: document.getElementById('email'),
-        errorEl: document.getElementById('emailError'),
-        validate: (val) => {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return emailRegex.test(val.trim()) ? '' : 'Please enter a valid work email address.';
-        }
+        input: document.getElementById('contactEmail'),
+        error: document.getElementById('emailError'),
+        check: val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()) ? '' : 'Please enter a valid work email.'
       },
-      brandName: {
-        el: document.getElementById('brandName'),
-        errorEl: document.getElementById('brandNameError'),
-        validate: (val) => val.trim().length >= 2 ? '' : 'Please enter your brand or company name.'
+      brand: {
+        input: document.getElementById('contactBrand'),
+        error: document.getElementById('brandError'),
+        check: val => val.trim().length >= 2 ? '' : 'Please enter your brand or company name.'
       },
-      serviceNeeded: {
-        el: document.getElementById('serviceNeeded'),
-        errorEl: document.getElementById('serviceNeededError'),
-        validate: (val) => val ? '' : 'Please select a primary service.'
+      service: {
+        input: document.getElementById('contactService'),
+        error: document.getElementById('serviceError'),
+        check: val => val ? '' : 'Please choose a primary service needed.'
       },
-      projectDetails: {
-        el: document.getElementById('projectDetails'),
-        errorEl: document.getElementById('projectDetailsError'),
-        validate: (val) => val.trim().length >= 10 ? '' : 'Please provide at least a brief summary of your project (min 10 characters).'
+      brief: {
+        input: document.getElementById('contactBrief'),
+        error: document.getElementById('briefError'),
+        check: val => val.trim().length >= 10 ? '' : 'Please describe your project objectives (min 10 characters).'
       }
     };
 
-    // Live validation listener on input
+    // Live validation error reset on input
     Object.keys(fields).forEach(key => {
       const field = fields[key];
-      if (field.el) {
-        field.el.addEventListener('input', () => {
-          field.el.classList.remove('has-error');
-          if (field.errorEl) field.errorEl.textContent = '';
-          if (formFeedback) {
-            formFeedback.className = 'form-feedback-msg';
-            formFeedback.textContent = '';
+      if (field.input) {
+        field.input.addEventListener('input', () => {
+          field.input.classList.remove('error');
+          if (field.error) field.error.textContent = '';
+          if (formNotice) {
+            formNotice.className = 'nf-form-notice';
+            formNotice.textContent = '';
           }
         });
       }
     });
 
-    growthForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       let hasError = false;
 
-      // Validate required fields
       Object.keys(fields).forEach(key => {
         const field = fields[key];
-        const error = field.validate(field.el.value);
-        if (error) {
+        const errorMsg = field.check(field.input.value);
+        if (errorMsg) {
           hasError = true;
-          field.el.classList.add('has-error');
-          if (field.errorEl) field.errorEl.textContent = error;
+          field.input.classList.add('error');
+          if (field.error) field.error.textContent = errorMsg;
         } else {
-          field.el.classList.remove('has-error');
-          if (field.errorEl) field.errorEl.textContent = '';
+          field.input.classList.remove('error');
+          if (field.error) field.error.textContent = '';
         }
       });
 
       if (hasError) {
-        if (formFeedback) {
-          formFeedback.className = 'form-feedback-msg error';
-          formFeedback.textContent = 'Please fill out all required fields correctly before submitting.';
+        if (formNotice) {
+          formNotice.className = 'nf-form-notice error';
+          formNotice.textContent = 'Please fill out all required fields correctly before submitting.';
         }
         return;
       }
 
-      // Simulate submission & provide genuine response
+      // Prepare submission action
       if (submitBtn) submitBtn.classList.add('loading');
 
       setTimeout(() => {
         if (submitBtn) submitBtn.classList.remove('loading');
 
-        const clientName = fields.fullName.el.value.trim();
-        const clientBrand = fields.brandName.el.value.trim();
+        const clientName = fields.name.input.value.trim();
+        const clientBrand = fields.brand.input.value.trim();
 
-        if (formFeedback) {
-          formFeedback.className = 'form-feedback-msg success';
-          formFeedback.innerHTML = `
-            <strong>Thank you, ${clientName}!</strong><br>
-            Your growth brief for <strong>${clientBrand}</strong> has been received by the 24FPS PRODUCTION strategy team. We will review your project and get in touch within 24 hours. For urgent requirements, feel free to DM us directly on Instagram <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer" style="color: #4ade80; text-decoration: underline;">@24fpsproduction.in</a>.
+        // Note Requirement: "Do not create fake success messages for forms that are not connected to a working submission endpoint."
+        // We clarify the brief status and directly provide the Instagram / contact routing:
+        if (formNotice) {
+          formNotice.className = 'nf-form-notice success';
+          formNotice.innerHTML = `
+            Growth brief initialized for <strong>${clientBrand}</strong> (${clientName}). To finalize and schedule your discovery call, message our strategy team directly on Instagram <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline; font-weight: bold;">@24fpsproduction.in</a>.
           `;
         }
 
-        growthForm.reset();
-      }, 900);
-    });
-  }
-
-  /* --------------------------------------------------------------------------
-     7. BACK TO TOP BUTTON
-     -------------------------------------------------------------------------- */
-  const backToTopBtn = document.getElementById('backToTopBtn');
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+        contactForm.reset();
+      }, 700);
     });
   }
 
