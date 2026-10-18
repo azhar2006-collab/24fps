@@ -77,7 +77,7 @@
 
   window.handleSignInSubmit = function (e) {
     e.preventDefault();
-    alert('Welcome to 24 FPS Member Portal! Your session is verified.');
+    alert('Welcome to 24FPS PRODUCTION Member Portal! Your session is verified.');
     closeSignInModal();
   };
 
