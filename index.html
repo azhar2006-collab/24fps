@@ -1,764 +1,1211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>24FPS PRODUCTION India – Watch Shows Online, Watch Movies Online</title>
-  <meta name="description" content="Watch 24FPS PRODUCTION brand films, commercial reels & originals online. High-impact visual storytelling, cinema-grade commercials, and digital technology." />
-  <link rel="icon" type="image/png" href="logo-transparent.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="netflix-body">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>24FPS PRODUCTION | Premium Lifestyle &amp; Fitness Digital Marketing Agency</title>
+  <meta name="description" content="24FPS PRODUCTION is a premium digital marketing &amp; creative agency specializing in lifestyle, fitness, wellness, and high-performance consumer brands. We build brands that move people.">
+  <meta name="keywords" content="24FPS PRODUCTION, digital marketing agency, fitness marketing, lifestyle agency, brand strategy, performance marketing, video production, influencer marketing">
+  <meta name="author" content="24FPS PRODUCTION">
+  <meta name="theme-color" content="#0a0a0a">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="24FPS PRODUCTION | Premium Lifestyle &amp; Fitness Agency">
+  <meta property="og:description" content="From impactful brand campaigns to high-converting digital strategies. We build brands that move people.">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:url" content="https://github.com/azhar2006-collab/24fps">
 
-  <!-- ============================================================
-       NETFLIX NAVBAR
-       ============================================================ -->
-  <header class="netflix-header" id="netflixHeader">
-    <div class="netflix-nav-container">
-      <a href="#" class="netflix-logo" aria-label="24FPS PRODUCTION Home">
-        <span class="netflix-logo-text">24FPS PRODUCTION</span>
+  <link rel="icon" type="image/png" href="logo-transparent.png">
+  
+  <!-- Google Fonts: Inter & Syne for cinematic editorial typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+
+  <!-- ==============================================
+       HEADER / NAVIGATION
+       ============================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="nav-container">
+      <a href="#top" class="brand-logo" aria-label="24FPS PRODUCTION Home">
+        <img src="logo-transparent.png" alt="24FPS PRODUCTION" class="logo-img" width="140" height="42">
+        <span class="logo-text">24FPS <span>PRODUCTION</span></span>
       </a>
 
-      <div class="netflix-nav-actions">
-        <!-- Language Selector Dropdown -->
-        <div class="netflix-lang-picker">
-          <i class="fas fa-globe lang-icon"></i>
-          <select id="langSelect" aria-label="Language Selector">
-            <option value="en">English</option>
-            <option value="hi">हिन्दी</option>
-          </select>
-          <i class="fas fa-caret-down caret-icon"></i>
-        </div>
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#top" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#industries" class="nav-link">Industries</a></li>
+          <li><a href="#approach" class="nav-link">Approach</a></li>
+          <li><a href="#why-us" class="nav-link">Why Us</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
 
-        <!-- Sign In Button -->
-        <button class="netflix-btn netflix-btn-red netflix-btn-signin" id="navSignInBtn">Sign In</button>
+      <!-- Header CTA & Mobile Hamburger -->
+      <div class="header-actions">
+        <a href="#contact" class="btn btn-primary btn-sm nav-cta">Let's Talk Growth</a>
+        
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileNav">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-drawer" id="mobileNav" aria-hidden="true">
+      <div class="mobile-drawer-header">
+        <div class="brand-logo">
+          <img src="logo-transparent.png" alt="24FPS PRODUCTION" class="logo-img" width="120" height="36">
+        </div>
+        <button class="mobile-close" id="mobileCloseBtn" aria-label="Close Navigation Menu">&times;</button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="#top" class="mobile-link">Home</a></li>
+        <li><a href="#about" class="mobile-link">About</a></li>
+        <li><a href="#services" class="mobile-link">Services</a></li>
+        <li><a href="#work" class="mobile-link">Work</a></li>
+        <li><a href="#industries" class="mobile-link">Industries</a></li>
+        <li><a href="#approach" class="mobile-link">Approach</a></li>
+        <li><a href="#why-us" class="mobile-link">Why Us</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="#contact" class="btn btn-primary btn-block">Let's Talk Growth</a>
+        <div class="drawer-contact-info">
+          <p>Follow us: <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer">@24fpsproduction.in</a></p>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- ============================================================
-       HERO BANNER
-       ============================================================ -->
-  <section class="netflix-hero" id="heroSection">
-    <div class="netflix-hero-bg">
-      <div class="netflix-hero-poster-matrix"></div>
-      <div class="netflix-hero-gradient-overlay"></div>
-      <div class="netflix-hero-radial-glow"></div>
-    </div>
+  <main id="mainContent">
 
-    <div class="netflix-hero-content">
-      <h1 class="netflix-hero-title">Unlimited movies, shows, and more</h1>
-      <p class="netflix-hero-subtitle">Starts at ₹149. Cancel anytime.</p>
-      <h3 class="netflix-hero-prompt">Ready to watch? Enter your email to create or restart your membership.</h3>
-
-      <!-- Netflix Email Form -->
-      <form class="netflix-email-form" id="heroEmailForm" onsubmit="handleEmailSubmit(event, 'heroEmail')">
-        <div class="netflix-input-group">
-          <input type="email" id="heroEmail" class="netflix-input-field" placeholder=" " required />
-          <label for="heroEmail" class="netflix-input-label">Email address</label>
-        </div>
-        <button type="submit" class="netflix-btn netflix-btn-red netflix-btn-hero">
-          <span>Get Started</span>
-          <i class="fas fa-chevron-right btn-chevron"></i>
-        </button>
-      </form>
-      <p class="netflix-form-success" id="heroSuccessMsg"><i class="fas fa-check-circle"></i> Welcome! Your 24FPS PRODUCTION pass is being activated.</p>
-    </div>
-
-    <!-- Authentic Netflix Curved Arc Divider -->
-    <div class="netflix-curve-divider">
-      <div class="netflix-curve-arc"></div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       TRENDING NOW / TOP 10 RANKED SECTION
-       ============================================================ -->
-  <section class="netflix-section netflix-trending-section" id="trending">
-    <div class="netflix-container">
-      <div class="trending-header-row">
-        <h2 class="netflix-section-heading">Trending Now</h2>
-        <div class="trending-filter-group">
-          <div class="filter-dropdown-pill">
-            <span>India</span>
-            <i class="fas fa-caret-down"></i>
-          </div>
-          <div class="filter-dropdown-pill">
-            <span>Productions & Commercials</span>
-            <i class="fas fa-caret-down"></i>
-          </div>
-        </div>
+    <!-- ==============================================
+         CINEMATIC HERO SECTION
+         ============================================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-media-wrapper">
+        <video class="hero-video" id="heroVideo" autoplay loop muted playsinline poster="logo.png">
+          <source src="reel1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
       </div>
 
-      <!-- Top 10 Ranked Carousel -->
-      <div class="trending-carousel-wrapper">
-        <button class="carousel-arrow arrow-left" id="trendingPrev" onclick="scrollTrending(-1)" aria-label="Previous Slide">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-
-        <div class="trending-track" id="trendingTrack">
-
-          <!-- #1: 77 Fitness Studio Testimonials (Reel 1) -->
-          <div class="trending-card" onclick="openVideoModal('reel1', '77 Fitness Studio – Celebrity Testimonials', 'Watch top stars and serial cast discuss their elite gym transformation at 77 Fitness Studio. Filmed with cinema-grade anamorphic optics, dynamic sound design, and color mastery.', 'Commercial · Fitness', 'reel1.mp4', 'https://www.instagram.com/reel/DS49NbeCYUl/')">
-            <div class="trending-rank-number">1</div>
-            <div class="trending-poster-wrap">
-              <video class="trending-thumb-video" src="reel1.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-top-badge"><span class="top-tag">TOP 10</span></div>
-              <div class="trending-card-info">
-                <span class="card-genre">COMMERCIAL</span>
-                <h4 class="card-title">77 Fitness Studio</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">98% Match</span>
-                  <span class="age-badge">U/A 13+</span>
-                  <span class="quality-badge">4K HDR</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-          <!-- #2: 77 Fitness Grand Launch Vadapalani (Reel 2) -->
-          <div class="trending-card" onclick="openIframeModal('https://www.instagram.com/reel/DUqHSRREdTU/embed/', '77 Fitness Studio – Grand Launch Vadapalani', 'From a dream to reality, from vision to victory. High-octane cinematic launch campaign produced by 24FPS PRODUCTION for 77 Fitness Vadapalani.', 'Brand Film · Launch Event', 'https://www.instagram.com/reel/DUqHSRREdTU/')">
-            <div class="trending-rank-number">2</div>
-            <div class="trending-poster-wrap">
-              <div class="poster-fallback-img poster-r2">
-                <div class="poster-watermark"><i class="fas fa-dumbbell"></i></div>
-              </div>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-top-badge"><span class="top-tag">TOP 10</span></div>
-              <div class="trending-card-info">
-                <span class="card-genre">BRAND LAUNCH</span>
-                <h4 class="card-title">Grand Launch Vadapalani</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">97% Match</span>
-                  <span class="age-badge">U/A 13+</span>
-                  <span class="quality-badge">4K ULTRA</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-          <!-- #3: 24FPS PRODUCTION Creative Showcase 01 (Reel 3) -->
-          <div class="trending-card" onclick="openVideoModal('reel3', '24FPS PRODUCTION Creative Showcase 01', 'High-impact dynamic commercial edit featuring rhythm cut sound sync, stylized neon grading, and punchy visual hooks engineered for social virality.', 'Visuals · VFX · Motion', 'reel3.mp4', 'https://www.instagram.com/reel/C9XP0_jv8Qq/')">
-            <div class="trending-rank-number">3</div>
-            <div class="trending-poster-wrap">
-              <video class="trending-thumb-video" src="reel3.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-top-badge"><span class="top-tag">TOP 10</span></div>
-              <div class="trending-card-info">
-                <span class="card-genre">ORIGINALS</span>
-                <h4 class="card-title">Creative Showcase 01</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">99% Match</span>
-                  <span class="age-badge">U/A 16+</span>
-                  <span class="quality-badge">4K HDR</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-          <!-- #4: 24FPS PRODUCTION Creative Showcase 02 (Reel 4) -->
-          <div class="trending-card" onclick="openVideoModal('reel4', '24FPS PRODUCTION Creative Showcase 02', 'Mastery in cinematography, lighting control, and high-conversion commercial framing crafted by the 24FPS PRODUCTION studio.', 'Cinematography · Commercial', 'reel4.mp4', 'https://www.instagram.com/reel/C76p6gBp0Jd/')">
-            <div class="trending-rank-number">4</div>
-            <div class="trending-poster-wrap">
-              <video class="trending-thumb-video" src="reel4.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-top-badge"><span class="top-tag">TOP 10</span></div>
-              <div class="trending-card-info">
-                <span class="card-genre">CINEMA</span>
-                <h4 class="card-title">Creative Showcase 02</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">96% Match</span>
-                  <span class="age-badge">U/A 13+</span>
-                  <span class="quality-badge">4K HDR</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-          <!-- #5: Aroos Makeover -->
-          <div class="trending-card" onclick="openVideoModal('reel1', 'Aroos Makeover – Luxury Bridal Film', 'Luxury bridal couture and cinematic artistry highlighting intricate aesthetics, elegant color palettes, and royal visual storytelling.', 'Luxury · Fashion · Bridal', 'reel1.mp4', 'https://www.instagram.com/aroosmakeover')">
-            <div class="trending-rank-number">5</div>
-            <div class="trending-poster-wrap">
-              <div class="poster-fallback-img poster-r5">
-                <div class="poster-watermark"><i class="fas fa-gem"></i></div>
-              </div>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-top-badge"><span class="top-tag">TOP 10</span></div>
-              <div class="trending-card-info">
-                <span class="card-genre">LUXURY & BEAUTY</span>
-                <h4 class="card-title">Aroos Makeover</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">95% Match</span>
-                  <span class="age-badge">All</span>
-                  <span class="quality-badge">4K ULTRA</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-          <!-- #6: The Mighty Fitness World -->
-          <div class="trending-card" onclick="openVideoModal('reel3', 'The Mighty Fitness World Campaign', 'Full-spectrum fitness commercial combining heavy lifting kinetics, athlete discipline, and cutting-edge lighting design.', 'Health · Fitness Campaign', 'reel3.mp4', 'https://www.instagram.com/24fpsproduction.in')">
-            <div class="trending-rank-number">6</div>
-            <div class="trending-poster-wrap">
-              <div class="poster-fallback-img poster-r6">
-                <div class="poster-watermark"><i class="fas fa-bolt"></i></div>
-              </div>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-card-info">
-                <span class="card-genre">FITNESS & WELLNESS</span>
-                <h4 class="card-title">The Mighty Fitness</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">94% Match</span>
-                  <span class="age-badge">U/A 13+</span>
-                  <span class="quality-badge">4K DCI</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-          <!-- #7: GNC India Brand Campaign -->
-          <div class="trending-card" onclick="openVideoModal('reel4', 'GNC India – Nutrition & Performance', 'High-retention digital ad campaign designed for national multi-channel scale across Meta, YouTube, and OTT streaming.', 'Nutrition · Digital Growth', 'reel4.mp4', 'https://www.instagram.com/24fpsproduction.in')">
-            <div class="trending-rank-number">7</div>
-            <div class="trending-poster-wrap">
-              <div class="poster-fallback-img poster-r7">
-                <div class="poster-watermark"><i class="fas fa-fire-flame-curved"></i></div>
-              </div>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-card-info">
-                <span class="card-genre">HEALTH & NUTRITION</span>
-                <h4 class="card-title">GNC India</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">96% Match</span>
-                  <span class="age-badge">All</span>
-                  <span class="quality-badge">4K ULTRA</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-          <!-- #8: High On Fitness -->
-          <div class="trending-card" onclick="openVideoModal('reel1', 'High On Fitness – Performance Showcase', 'Strength, endurance, and raw athletic power captured with high-speed camera rigs and intense sound mixing.', 'Strength · Athletics', 'reel1.mp4', 'https://www.instagram.com/24fpsproduction.in')">
-            <div class="trending-rank-number">8</div>
-            <div class="trending-poster-wrap">
-              <div class="poster-fallback-img poster-r8">
-                <div class="poster-watermark"><i class="fas fa-heart-pulse"></i></div>
-              </div>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-card-info">
-                <span class="card-genre">PERFORMANCE ADS</span>
-                <h4 class="card-title">High On Fitness</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">93% Match</span>
-                  <span class="age-badge">U/A 13+</span>
-                  <span class="quality-badge">HD</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-          <!-- #9: 24FPS PRODUCTION Master Showreel -->
-          <div class="trending-card" onclick="openVideoModal('reel3', '24FPS PRODUCTION – Master Cinematic Showreel', 'The defining reel of 24FPS PRODUCTION. Where creativity meets technology across brand films, visual effects, and full-stack digital marketing.', 'Studio Reel · 24FPS PRODUCTION', 'reel3.mp4', 'https://www.instagram.com/24fpsproduction.in')">
-            <div class="trending-rank-number">9</div>
-            <div class="trending-poster-wrap">
-              <div class="poster-fallback-img poster-r9">
-                <img src="logo-transparent.png" alt="24FPS PRODUCTION" class="poster-logo-thumb" />
-              </div>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-card-info">
-                <span class="card-genre">STUDIO REEL</span>
-                <h4 class="card-title">24FPS PRODUCTION Showreel</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">100% Match</span>
-                  <span class="age-badge">All</span>
-                  <span class="quality-badge">4K HDR</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-          <!-- #10: Web & Tech Ecosystem -->
-          <div class="trending-card" onclick="openVideoModal('reel4', '24FPS PRODUCTION – Web & Enterprise Technology', 'Transforming modern businesses with high-converting web applications, CRM engines, automated marketing workflows, and digital infrastructure.', 'Technology · Web · CRM', 'reel4.mp4', 'https://www.instagram.com/24fpsproduction.in')">
-            <div class="trending-rank-number">10</div>
-            <div class="trending-poster-wrap">
-              <div class="poster-fallback-img poster-r10">
-                <div class="poster-watermark"><i class="fas fa-laptop-code"></i></div>
-              </div>
-              <div class="poster-overlay-gradient"></div>
-              <div class="trending-card-info">
-                <span class="card-genre">TECHNOLOGY</span>
-                <h4 class="card-title">Web & Tech Ecosystem</h4>
-                <div class="card-meta-line">
-                  <span class="match-score">97% Match</span>
-                  <span class="age-badge">All</span>
-                  <span class="quality-badge">4K ULTRA</span>
-                </div>
-              </div>
-              <div class="card-play-pill"><i class="fas fa-play"></i> Watch</div>
-            </div>
-          </div>
-
-        </div>
-
-        <button class="carousel-arrow arrow-right" id="trendingNext" onclick="scrollTrending(1)" aria-label="Next Slide">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       FEATURED HORIZONTAL REEL SHOWCASE (WITH WORKING MIC CONTROLS)
-       ============================================================ -->
-  <section class="netflix-section netflix-featured-showcase" id="reels">
-    <div class="netflix-container">
-      <div class="section-title-wrap">
-        <h2 class="netflix-section-heading">Featured Commercial Reels</h2>
-        <p class="netflix-section-desc">Real productions streaming in horizontal widescreen. Turn mic on to experience live audio sync.</p>
-      </div>
-
-      <!-- Master Audio Toggle Bar -->
-      <div class="showcase-control-bar">
-        <div class="showcase-meta-tag">
-          <span class="pulse-indicator"></span> 24.000 FPS SYNCED AUDIO ENGINE
-        </div>
-        <button class="netflix-master-mic-btn" id="masterMicBtn" onclick="toggleAllReelsMic()">
-          <i class="fas fa-microphone-slash" id="masterMicIcon"></i>
-          <span id="masterMicLabel">ALL MICS: MUTED</span>
+      <!-- Hero Audio Toggle (Mic On / Off) -->
+      <div class="hero-audio-control">
+        <button class="audio-toggle-btn" id="heroAudioToggle" aria-label="Toggle hero video sound">
+          <svg class="audio-icon audio-muted-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+          </svg>
+          <svg class="audio-icon audio-unmuted-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+          <span class="audio-label" id="heroAudioLabel">Unmute Sound</span>
         </button>
       </div>
 
-      <!-- Horizontal Cards Grid -->
-      <div class="netflix-horizontal-grid">
-
-        <!-- Reel 1 -->
-        <div class="netflix-hcard">
-          <div class="hcard-player-frame">
-            <video class="hcard-video" id="video_reel1" src="reel1.mp4" playsinline loop autoplay muted preload="metadata"></video>
-            <div class="hcard-overlay" onclick="togglePlayPause('video_reel1')">
-              <div class="hcard-play-icon"><i class="fas fa-play"></i></div>
-            </div>
-            <!-- Dedicated Mic Button -->
-            <button class="netflix-mic-toggle" onclick="toggleReelMic('video_reel1', this)" title="Turn Mic/Audio On & Off">
-              <i class="fas fa-microphone-slash"></i>
-              <span class="mic-label">MIC OFF</span>
-              <span class="audio-bars"><span></span><span></span><span></span></span>
-            </button>
-          </div>
-          <div class="hcard-body">
-            <div class="hcard-badge-row">
-              <span class="hbadge red">COMMERCIAL</span>
-              <span class="hbadge gray">4K HDR</span>
-            </div>
-            <h3 class="hcard-title">77 Fitness Studio – Star Testimonials</h3>
-            <p class="hcard-text">Celebrity gym experience & world-class fitness gear showcase produced for multi-channel TV and digital ads.</p>
-            <div class="hcard-actions">
-              <a href="https://www.instagram.com/reel/DS49NbeCYUl/" target="_blank" rel="noopener noreferrer" class="nf-link-btn">
-                <i class="fab fa-instagram"></i> View on Instagram
-              </a>
-            </div>
-          </div>
+      <div class="hero-content container">
+        <div class="hero-badge reveal">
+          <span class="badge-dot"></span>
+          <span>Premium Lifestyle &amp; Fitness Growth Agency</span>
         </div>
 
-        <!-- Reel 2 -->
-        <div class="netflix-hcard">
-          <div class="hcard-player-frame">
-            <iframe
-              src="https://www.instagram.com/reel/DUqHSRREdTU/embed/"
-              class="hcard-iframe"
-              frameborder="0" scrolling="no" allowtransparency="true"
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              title="77 Fitness Vadapalani Launch"
-            ></iframe>
-            <button class="netflix-mic-toggle mic-active" onclick="toggleIframeSound(this)">
-              <i class="fas fa-microphone"></i>
-              <span class="mic-label">MIC ON</span>
-              <span class="audio-bars active"><span></span><span></span><span></span></span>
-            </button>
-          </div>
-          <div class="hcard-body">
-            <div class="hcard-badge-row">
-              <span class="hbadge red">BRAND LAUNCH</span>
-              <span class="hbadge gray">HIGH IMPACT</span>
-            </div>
-            <h3 class="hcard-title">Grand Launch – 77 Fitness Vadapalani</h3>
-            <p class="hcard-text">New zone, new energy, new standards. High-retention launch film capturing the opening ceremonies and energy.</p>
-            <div class="hcard-actions">
-              <a href="https://www.instagram.com/reel/DUqHSRREdTU/" target="_blank" rel="noopener noreferrer" class="nf-link-btn">
-                <i class="fab fa-instagram"></i> View on Instagram
-              </a>
-            </div>
-          </div>
+        <h1 class="hero-title reveal delay-1">
+          WE BUILD BRANDS<br>
+          <span class="text-accent">THAT MOVE PEOPLE.</span>
+        </h1>
+
+        <p class="hero-subtitle reveal delay-2">
+          From impactful brand campaigns to high-converting digital strategies, we help lifestyle and fitness brands turn attention into action.
+        </p>
+
+        <div class="hero-cta-group reveal delay-3">
+          <a href="#work" class="btn btn-primary btn-lg">Explore Our Work</a>
+          <a href="#contact" class="btn btn-outline btn-lg">Let's Talk Growth</a>
         </div>
 
-        <!-- Reel 3 -->
-        <div class="netflix-hcard">
-          <div class="hcard-player-frame">
-            <video class="hcard-video" id="video_reel3" src="reel3.mp4" playsinline loop autoplay muted preload="metadata"></video>
-            <div class="hcard-overlay" onclick="togglePlayPause('video_reel3')">
-              <div class="hcard-play-icon"><i class="fas fa-play"></i></div>
-            </div>
-            <button class="netflix-mic-toggle" onclick="toggleReelMic('video_reel3', this)" title="Turn Mic/Audio On & Off">
-              <i class="fas fa-microphone-slash"></i>
-              <span class="mic-label">MIC OFF</span>
-              <span class="audio-bars"><span></span><span></span><span></span></span>
-            </button>
-          </div>
-          <div class="hcard-body">
-            <div class="hcard-badge-row">
-              <span class="hbadge red">ORIGINALS</span>
-              <span class="hbadge gray">VFX & 3D</span>
-            </div>
-            <h3 class="hcard-title">Creative Showcase 01 – Visuals</h3>
-            <p class="hcard-text">Dynamic commercial edit with rhythm-matched motion graphics, color grading, and explosive sound effects.</p>
-            <div class="hcard-actions">
-              <a href="https://www.instagram.com/reel/C9XP0_jv8Qq/" target="_blank" rel="noopener noreferrer" class="nf-link-btn">
-                <i class="fab fa-instagram"></i> View on Instagram
-              </a>
-            </div>
-          </div>
+        <div class="hero-scroll-indicator reveal delay-4">
+          <a href="#about" aria-label="Scroll to about section">
+            <span class="mouse-icon">
+              <span class="mouse-wheel"></span>
+            </span>
+            <span class="scroll-text">SCROLL TO EXPLORE</span>
+          </a>
         </div>
-
-        <!-- Reel 4 -->
-        <div class="netflix-hcard">
-          <div class="hcard-player-frame">
-            <video class="hcard-video" id="video_reel4" src="reel4.mp4" playsinline loop autoplay muted preload="metadata"></video>
-            <div class="hcard-overlay" onclick="togglePlayPause('video_reel4')">
-              <div class="hcard-play-icon"><i class="fas fa-play"></i></div>
-            </div>
-            <button class="netflix-mic-toggle" onclick="toggleReelMic('video_reel4', this)" title="Turn Mic/Audio On & Off">
-              <i class="fas fa-microphone-slash"></i>
-              <span class="mic-label">MIC OFF</span>
-              <span class="audio-bars"><span></span><span></span><span></span></span>
-            </button>
-          </div>
-          <div class="hcard-body">
-            <div class="hcard-badge-row">
-              <span class="hbadge red">CINEMA</span>
-              <span class="hbadge gray">COMMERCIAL</span>
-            </div>
-            <h3 class="hcard-title">Creative Showcase 02 – Cinematography</h3>
-            <p class="hcard-text">Masterful camera movement and narrative timing created for brands seeking premium digital presence.</p>
-            <div class="hcard-actions">
-              <a href="https://www.instagram.com/reel/C76p6gBp0Jd/" target="_blank" rel="noopener noreferrer" class="nf-link-btn">
-                <i class="fab fa-instagram"></i> View on Instagram
-              </a>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
-       MORE REASONS TO JOIN (NETFLIX VALUE PROPOSITION)
-       ============================================================ -->
-  <section class="netflix-section netflix-reasons-section" id="reasons">
-    <div class="netflix-container">
-      <h2 class="netflix-section-heading">More reasons to join</h2>
-
-      <div class="reasons-grid">
-        <!-- Card 1 -->
-        <div class="reason-card">
-          <h3 class="reason-card-title">Enjoy on your TV</h3>
-          <p class="reason-card-text">Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more. 4K master files tailored for cinema & broadcast screens.</p>
-          <div class="reason-card-icon">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <rect x="6" y="10" width="52" height="34" rx="4" stroke="#e50914" stroke-width="2.5" fill="rgba(229,9,20,0.1)"/>
-              <path d="M22 54L42 54" stroke="#e50914" stroke-width="3" stroke-linecap="round"/>
-              <path d="M32 44V54" stroke="#e50914" stroke-width="3"/>
-              <polygon points="28,21 39,27 28,33" fill="#ff3344"/>
-            </svg>
-          </div>
+    <!-- ==============================================
+         CLIENT MARQUEE / TICKER
+         ============================================== -->
+    <section class="brand-ticker-section" aria-label="Trusted by industry brands">
+      <div class="ticker-intro">
+        <span class="ticker-label">COLLABORATING WITH FORWARD-THINKING BRANDS</span>
+      </div>
+      <div class="ticker-wrapper">
+        <div class="ticker-track">
+          <span class="ticker-item">77 FITNESS STUDIO</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">AROOS MAKEOVER</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">GNC INDIA</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">THE MIGHTY FITNESS WORLD</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">HIGH ON FITNESS</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">77 VADAPALANI</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">24FPS CREATIVE LABS</span>
+          <span class="ticker-separator">&bull;</span>
+          <!-- Duplicate for seamless infinite loop -->
+          <span class="ticker-item">77 FITNESS STUDIO</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">AROOS MAKEOVER</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">GNC INDIA</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">THE MIGHTY FITNESS WORLD</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">HIGH ON FITNESS</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">77 VADAPALANI</span>
+          <span class="ticker-separator">&bull;</span>
+          <span class="ticker-item">24FPS CREATIVE LABS</span>
+          <span class="ticker-separator">&bull;</span>
         </div>
+      </div>
+    </section>
 
-        <!-- Card 2 -->
-        <div class="reason-card">
-          <h3 class="reason-card-title">Download your shows to watch offline</h3>
-          <p class="reason-card-text">Save your favourites easily and always have something to watch. High-speed cloud asset vault with all raw cuts, stems, and color grades.</p>
-          <div class="reason-card-icon">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <circle cx="32" cy="32" r="26" stroke="#e50914" stroke-width="2.5" fill="rgba(229,9,20,0.1)"/>
-              <path d="M32 18V38M32 38L24 30M32 38L40 30" stroke="#ff3344" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M20 44H44" stroke="#e50914" stroke-width="3" stroke-linecap="round"/>
-            </svg>
+    <!-- ==============================================
+         ABOUT SECTION / AGENCY ESSENCE
+         ============================================== -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-tag reveal">ABOUT 24FPS PRODUCTION</div>
+        <div class="about-grid">
+          <div class="about-headline-col reveal">
+            <h2 class="section-title">
+              THE CINEMATIC ADVANTAGE IN DIGITAL GROWTH.
+            </h2>
+            <p class="about-lead">
+              We bridge the chasm between award-caliber cinematic storytelling and aggressive, conversion-focused digital performance.
+            </p>
           </div>
-        </div>
+          <div class="about-body-col reveal delay-1">
+            <p>
+              In lifestyle and fitness, standard marketing is white noise. Audiences demand energy, authenticity, and visual excellence that sparks emotion. At <strong>24FPS PRODUCTION</strong>, we craft high-production commercial content and power it with data-driven paid acquisition systems.
+            </p>
+            <p>
+              Whether launching a high-profile fitness facility, scaling a direct-to-consumer sports nutrition brand, or building cultural relevance for premium lifestyle labels, we engineer brand equity and measurable commercial growth simultaneously.
+            </p>
 
-        <!-- Card 3 -->
-        <div class="reason-card">
-          <h3 class="reason-card-title">Watch everywhere</h3>
-          <p class="reason-card-text">Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV. Multi-platform social campaigns engineered for Instagram, YouTube, and Web.</p>
-          <div class="reason-card-icon">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <rect x="8" y="14" width="34" height="24" rx="3" stroke="#e50914" stroke-width="2.5" fill="rgba(229,9,20,0.1)"/>
-              <rect x="34" y="24" width="22" height="28" rx="3" stroke="#ff3344" stroke-width="2.5" fill="#141414"/>
-              <circle cx="45" cy="48" r="1.5" fill="#e50914"/>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="reason-card">
-          <h3 class="reason-card-title">Create profiles for kids</h3>
-          <p class="reason-card-text">Send kids on adventures with their favourite characters in a space made just for them — free with your membership. Dedicated production directors assigned to you.</p>
-          <div class="reason-card-icon">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <rect x="10" y="10" width="44" height="44" rx="10" stroke="#e50914" stroke-width="2.5" fill="rgba(229,9,20,0.1)"/>
-              <circle cx="25" cy="28" r="3.5" fill="#ff3344"/>
-              <circle cx="39" cy="28" r="3.5" fill="#ff3344"/>
-              <path d="M22 38C26 44 38 44 42 38" stroke="#ff3344" stroke-width="3" stroke-linecap="round"/>
-            </svg>
+            <div class="about-pillars">
+              <div class="pillar-item">
+                <span class="pillar-num">01</span>
+                <div>
+                  <h4 class="pillar-title">Cinematic Craft</h4>
+                  <p class="pillar-desc">Hollywood-standard visual direction and short-form storytelling designed to command feed-stopping attention.</p>
+                </div>
+              </div>
+              <div class="pillar-item">
+                <span class="pillar-num">02</span>
+                <div>
+                  <h4 class="pillar-title">Performance Precision</h4>
+                  <p class="pillar-desc">Data-backed conversion funnels and targeted media buying that translate views into paying customers.</p>
+                </div>
+              </div>
+              <div class="pillar-item">
+                <span class="pillar-num">03</span>
+                <div>
+                  <h4 class="pillar-title">Niche Mastery</h4>
+                  <p class="pillar-desc">Deep native understanding of fitness culture, wellness motivations, and modern consumer aesthetics.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
-       FREQUENTLY ASKED QUESTIONS (NETFLIX ACCORDIONS)
-       ============================================================ -->
-  <section class="netflix-section netflix-faq-section" id="faq">
-    <div class="netflix-container">
-      <h2 class="netflix-section-heading">Frequently Asked Questions</h2>
-
-      <div class="faq-accordion-list">
-        <!-- Item 1 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" onclick="toggleFaq(this)">
-            <span>What is 24FPS PRODUCTION?</span>
-            <i class="fas fa-plus faq-toggle-icon"></i>
-          </button>
-          <div class="faq-answer-panel">
-            <p>24FPS PRODUCTION is a creative digital, media, and technology company designed for ambitious brands. We craft high-impact brand films, viral social commercials, performance advertising campaigns, and enterprise web applications under one unified roof.</p>
-            <p>Named after the legendary cinematic 24 frames-per-second standard, we blend artistic visual storytelling with data-driven performance marketing.</p>
-          </div>
+    <!-- ==============================================
+         SERVICES SECTION
+         ============================================== -->
+    <section class="section services-section" id="services">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">SERVICES</div>
+          <h2 class="section-title">CREATIVITY MEETS PERFORMANCE.</h2>
+          <p class="section-subtitle">
+            Every campaign has a purpose. Every strategy is built to move your brand forward.
+          </p>
         </div>
 
-        <!-- Item 2 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" onclick="toggleFaq(this)">
-            <span>How much does 24FPS PRODUCTION cost?</span>
-            <i class="fas fa-plus faq-toggle-icon"></i>
-          </button>
-          <div class="faq-answer-panel">
-            <p>Watch and collaborate with 24FPS PRODUCTION on your budget. We offer flexible project-based packages starting from starter social commercial reels up to full 360-degree digital transformation campaigns. No hidden fees or unexpected contracts.</p>
-          </div>
+        <div class="services-grid">
+
+          <!-- SERVICE 01 -->
+          <article class="service-card reveal">
+            <div class="service-card-header">
+              <span class="service-number">01</span>
+              <span class="service-badge">CORE FOUNDATION</span>
+            </div>
+            <h3 class="service-title">BRAND STRATEGY</h3>
+            <p class="service-description">
+              Build a brand that stands out, connects with the right audience, and creates lasting recognition.
+            </p>
+            <ul class="service-list">
+              <li>Brand positioning</li>
+              <li>Audience research</li>
+              <li>Brand messaging</li>
+              <li>Creative direction</li>
+              <li>Campaign planning</li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="#contact" class="service-link">Inquire Service &rarr;</a>
+            </div>
+          </article>
+
+          <!-- SERVICE 02 -->
+          <article class="service-card reveal delay-1">
+            <div class="service-card-header">
+              <span class="service-number">02</span>
+              <span class="service-badge">DATA &amp; ROI</span>
+            </div>
+            <h3 class="service-title">PERFORMANCE MARKETING</h3>
+            <p class="service-description">
+              Turn attention into measurable business growth through data-driven advertising and conversion-focused campaigns.
+            </p>
+            <ul class="service-list">
+              <li>Paid advertising (Meta &amp; Google)</li>
+              <li>Campaign optimization</li>
+              <li>Audience targeting &amp; retargeting</li>
+              <li>Conversion tracking</li>
+              <li>Performance reporting</li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="#contact" class="service-link">Inquire Service &rarr;</a>
+            </div>
+          </article>
+
+          <!-- SERVICE 03 -->
+          <article class="service-card reveal delay-2">
+            <div class="service-card-header">
+              <span class="service-number">03</span>
+              <span class="service-badge">COMMUNITY &amp; REACH</span>
+            </div>
+            <h3 class="service-title">SOCIAL MEDIA MARKETING</h3>
+            <p class="service-description">
+              Build communities, strengthen brand identity, and create content that people want to engage with.
+            </p>
+            <ul class="service-list">
+              <li>Social media strategy</li>
+              <li>Content planning &amp; calendar</li>
+              <li>Community engagement</li>
+              <li>Platform-specific campaigns</li>
+              <li>Performance analysis</li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="#contact" class="service-link">Inquire Service &rarr;</a>
+            </div>
+          </article>
+
+          <!-- SERVICE 04 -->
+          <article class="service-card reveal">
+            <div class="service-card-header">
+              <span class="service-number">04</span>
+              <span class="service-badge">CINEMATIC CRAFT</span>
+            </div>
+            <h3 class="service-title">CONTENT &amp; CREATIVE PRODUCTION</h3>
+            <p class="service-description">
+              Create compelling visual stories that make people stop, pay attention, and remember your brand.
+            </p>
+            <ul class="service-list">
+              <li>Campaign photography</li>
+              <li>Video production (Commercial &amp; Reel)</li>
+              <li>Creative concepts &amp; scripting</li>
+              <li>Short-form video</li>
+              <li>Advertising creatives</li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="#contact" class="service-link">Inquire Service &rarr;</a>
+            </div>
+          </article>
+
+          <!-- SERVICE 05 -->
+          <article class="service-card reveal delay-1">
+            <div class="service-card-header">
+              <span class="service-number">05</span>
+              <span class="service-badge">CULTURAL IMPACT</span>
+            </div>
+            <h3 class="service-title">INFLUENCER MARKETING</h3>
+            <p class="service-description">
+              Connect lifestyle and fitness brands with creators who influence culture and inspire action.
+            </p>
+            <ul class="service-list">
+              <li>Creator discovery &amp; vetting</li>
+              <li>Influencer campaigns</li>
+              <li>Campaign coordination</li>
+              <li>Content partnerships</li>
+              <li>Performance measurement</li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="#contact" class="service-link">Inquire Service &rarr;</a>
+            </div>
+          </article>
+
+          <!-- SERVICE 06 -->
+          <article class="service-card reveal delay-2">
+            <div class="service-card-header">
+              <span class="service-number">06</span>
+              <span class="service-badge">DIGITAL EXPERIENCE</span>
+            </div>
+            <h3 class="service-title">WEBSITE &amp; CONVERSION OPTIMIZATION</h3>
+            <p class="service-description">
+              Transform your digital presence into a seamless experience designed to convert visitors into customers.
+            </p>
+            <ul class="service-list">
+              <li>Landing page strategy</li>
+              <li>Website design &amp; development</li>
+              <li>Conversion optimization (CRO)</li>
+              <li>User experience improvements</li>
+              <li>Analytics &amp; tracking setup</li>
+            </ul>
+            <div class="service-card-footer">
+              <a href="#contact" class="service-link">Inquire Service &rarr;</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         INDUSTRIES SECTION
+         ============================================== -->
+    <section class="section industries-section" id="industries">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">SECTOR SPECIALIZATION</div>
+          <h2 class="section-title">BUILT FOR BRANDS THAT INSPIRE.</h2>
+          <p class="section-subtitle">
+            We focus exclusively where passion, lifestyle, and visual inspiration drive consumer decisions.
+          </p>
         </div>
 
-        <!-- Item 3 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" onclick="toggleFaq(this)">
-            <span>Where can I watch your productions?</span>
-            <i class="fas fa-plus faq-toggle-icon"></i>
-          </button>
-          <div class="faq-answer-panel">
-            <p>Watch our productions anywhere, anytime. You can stream our commercial reels right on this website with horizontal widescreen playback and mic audio controls, or follow our official company Instagram page at <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer" style="color:#e50914;font-weight:600;">@24fpsproduction.in</a>.</p>
+        <div class="industries-grid">
+          
+          <div class="industry-card reveal" data-category="fitness">
+            <div class="industry-card-overlay"></div>
+            <div class="industry-card-content">
+              <span class="industry-num">01</span>
+              <h3 class="industry-title">Fitness &amp; Gyms</h3>
+              <p class="industry-desc">High-energy visual commercials, member acquisition funnels, and prestige community positioning.</p>
+            </div>
           </div>
+
+          <div class="industry-card reveal delay-1" data-category="nutrition">
+            <div class="industry-card-overlay"></div>
+            <div class="industry-card-content">
+              <span class="industry-num">02</span>
+              <h3 class="industry-title">Sports Nutrition</h3>
+              <p class="industry-desc">Performance supplement launches, DTC growth campaigns, and athlete-backed credibility.</p>
+            </div>
+          </div>
+
+          <div class="industry-card reveal delay-2" data-category="fashion">
+            <div class="industry-card-overlay"></div>
+            <div class="industry-card-content">
+              <span class="industry-num">03</span>
+              <h3 class="industry-title">Lifestyle &amp; Fashion</h3>
+              <p class="industry-desc">Editorial lookbooks, evocative video stories, and influencer-led seasonal launches.</p>
+            </div>
+          </div>
+
+          <div class="industry-card reveal" data-category="wellness">
+            <div class="industry-card-overlay"></div>
+            <div class="industry-card-content">
+              <span class="industry-num">04</span>
+              <h3 class="industry-title">Health &amp; Wellness</h3>
+              <p class="industry-desc">Trust-centered brand architecture, mindful creative treatments, and retention programs.</p>
+            </div>
+          </div>
+
+          <div class="industry-card reveal delay-1" data-category="beauty">
+            <div class="industry-card-overlay"></div>
+            <div class="industry-card-content">
+              <span class="industry-num">05</span>
+              <h3 class="industry-title">Beauty &amp; Personal Care</h3>
+              <p class="industry-desc">Luxury product aesthetics, makeover showcases, and high-converting testimonial campaigns.</p>
+            </div>
+          </div>
+
+          <div class="industry-card reveal delay-2" data-category="activewear">
+            <div class="industry-card-overlay"></div>
+            <div class="industry-card-content">
+              <span class="industry-num">06</span>
+              <h3 class="industry-title">Activewear &amp; Apparel</h3>
+              <p class="industry-desc">Dynamic movement cinematics, technical product highlights, and modern e-commerce campaigns.</p>
+            </div>
+          </div>
+
+          <div class="industry-card reveal" data-category="beverage">
+            <div class="industry-card-overlay"></div>
+            <div class="industry-card-content">
+              <span class="industry-num">07</span>
+              <h3 class="industry-title">Food &amp; Beverage</h3>
+              <p class="industry-desc">Artisanal, healthy, and premium beverage visual campaigns crafted for taste appeal.</p>
+            </div>
+          </div>
+
+          <div class="industry-card reveal delay-1" data-category="consumer">
+            <div class="industry-card-overlay"></div>
+            <div class="industry-card-content">
+              <span class="industry-num">08</span>
+              <h3 class="industry-title">Premium Consumer Brands</h3>
+              <p class="industry-desc">Aspirational storytelling for direct-to-consumer goods seeking high market distinction.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         FEATURED WORK / CASE STUDIES
+         (Horizontal layout with sound toggle / mic on & off)
+         ============================================== -->
+    <section class="section work-section" id="work">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">FEATURED CAMPAIGNS</div>
+          <h2 class="section-title">WORK THAT MAKES AN IMPACT.</h2>
+          <p class="section-subtitle">
+            Explore our horizontal video showcases and campaigns crafted for leading fitness and lifestyle brands.
+          </p>
         </div>
 
-        <!-- Item 4 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" onclick="toggleFaq(this)">
-            <span>How do I cancel or modify a project?</span>
-            <i class="fas fa-plus faq-toggle-icon"></i>
-          </button>
-          <div class="faq-answer-panel">
-            <p>24FPS PRODUCTION is flexible. There are no annoying contracts and no commitments. We work on milestone-based deliverables with complete transparency, and you can pause, modify, or scale your production plan at any stage.</p>
-          </div>
+        <div class="case-studies-list">
+
+          <!-- CASE STUDY 01: 77 Fitness Studio -->
+          <article class="case-card reveal">
+            <div class="case-video-container">
+              <div class="case-video-wrapper horizontal-frame">
+                <video class="case-video" id="caseVideo1" loop playsinline preload="metadata">
+                  <source src="reel1.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <div class="video-controls-overlay">
+                  <button class="video-btn play-pause-btn" data-target="caseVideo1" aria-label="Play or pause campaign video">
+                    <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                      <polygon points="5,3 19,12 5,21"></polygon>
+                    </svg>
+                    <svg class="pause-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                      <rect x="6" y="4" width="4" height="16"></rect>
+                      <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                  </button>
+
+                  <button class="video-btn mic-toggle-btn" data-target="caseVideo1" aria-label="Toggle sound mic on and off">
+                    <svg class="mic-muted" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                      <path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.14 1.77-.45 2.54-.9l2.19 2.18L19 17.73 4.27 3z"/>
+                    </svg>
+                    <svg class="mic-live" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                      <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+                    </svg>
+                    <span class="mic-status-label">Mic: Off</span>
+                  </button>
+                </div>
+                <div class="video-aspect-badge">16:9 CINEMATIC</div>
+              </div>
+            </div>
+
+            <div class="case-content">
+              <div class="case-meta">
+                <span class="case-client">77 FITNESS STUDIO</span>
+                <span class="case-industry">FITNESS &amp; GYMS</span>
+              </div>
+              <h3 class="case-title">High-Energy Brand Commercial &amp; Member Acquisition Campaign</h3>
+              <p class="case-desc">
+                Conceived and produced a high-octane commercial campaign highlighting elite training discipline, premium gym culture, and motivating transformation energy.
+              </p>
+              
+              <div class="case-details-grid">
+                <div>
+                  <h5 class="detail-label">CAMPAIGN OBJECTIVE</h5>
+                  <p class="detail-value">Drive brand prestige &amp; generate qualified local membership inquiries.</p>
+                </div>
+                <div>
+                  <h5 class="detail-label">CREATIVE APPROACH</h5>
+                  <p class="detail-value">Fast-cut horizontal framing, dramatic low-key lighting, and pulse-raising sound design.</p>
+                </div>
+              </div>
+
+              <div class="case-tags">
+                <span class="tag">Creative Direction</span>
+                <span class="tag">Video Production</span>
+                <span class="tag">Performance Ads</span>
+                <span class="tag">Audio Mastering</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE STUDY 02: Aroos Makeover -->
+          <article class="case-card reveal">
+            <div class="case-video-container">
+              <div class="case-video-wrapper horizontal-frame">
+                <video class="case-video" id="caseVideo2" loop playsinline preload="metadata">
+                  <source src="reel3.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <div class="video-controls-overlay">
+                  <button class="video-btn play-pause-btn" data-target="caseVideo2" aria-label="Play or pause campaign video">
+                    <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                      <polygon points="5,3 19,12 5,21"></polygon>
+                    </svg>
+                    <svg class="pause-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                      <rect x="6" y="4" width="4" height="16"></rect>
+                      <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                  </button>
+
+                  <button class="video-btn mic-toggle-btn" data-target="caseVideo2" aria-label="Toggle sound mic on and off">
+                    <svg class="mic-muted" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                      <path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.14 1.77-.45 2.54-.9l2.19 2.18L19 17.73 4.27 3z"/>
+                    </svg>
+                    <svg class="mic-live" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                      <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+                    </svg>
+                    <span class="mic-status-label">Mic: Off</span>
+                  </button>
+                </div>
+                <div class="video-aspect-badge">16:9 CINEMATIC</div>
+              </div>
+            </div>
+
+            <div class="case-content">
+              <div class="case-meta">
+                <span class="case-client">AROOS MAKEOVER</span>
+                <span class="case-industry">BEAUTY &amp; LUXURY LIFESTYLE</span>
+              </div>
+              <h3 class="case-title">Luxury Bridal &amp; Editorial Makeover Brand Identity</h3>
+              <p class="case-desc">
+                Developed an ultra-premium aesthetic identity highlighting intricate craftsmanship, bridal elegance, and high-touch artistry for high-net-worth clients.
+              </p>
+              
+              <div class="case-details-grid">
+                <div>
+                  <h5 class="detail-label">CAMPAIGN OBJECTIVE</h5>
+                  <p class="detail-value">Elevate luxury brand prestige &amp; secure high-ticket wedding bookings.</p>
+                </div>
+                <div>
+                  <h5 class="detail-label">CREATIVE APPROACH</h5>
+                  <p class="detail-value">Soft-glow editorial macro visuals, graceful motion, and opulent color grading.</p>
+                </div>
+              </div>
+
+              <div class="case-tags">
+                <span class="tag">Brand Positioning</span>
+                <span class="tag">Visual Direction</span>
+                <span class="tag">Social Growth</span>
+                <span class="tag">Content Production</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE STUDY 03: 24FPS Creative Lab / Reel 4 -->
+          <article class="case-card reveal">
+            <div class="case-video-container">
+              <div class="case-video-wrapper horizontal-frame">
+                <video class="case-video" id="caseVideo3" loop playsinline preload="metadata">
+                  <source src="reel4.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <div class="video-controls-overlay">
+                  <button class="video-btn play-pause-btn" data-target="caseVideo3" aria-label="Play or pause campaign video">
+                    <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                      <polygon points="5,3 19,12 5,21"></polygon>
+                    </svg>
+                    <svg class="pause-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                      <rect x="6" y="4" width="4" height="16"></rect>
+                      <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                  </button>
+
+                  <button class="video-btn mic-toggle-btn" data-target="caseVideo3" aria-label="Toggle sound mic on and off">
+                    <svg class="mic-muted" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                      <path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.14 1.77-.45 2.54-.9l2.19 2.18L19 17.73 4.27 3z"/>
+                    </svg>
+                    <svg class="mic-live" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                      <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+                    </svg>
+                    <span class="mic-status-label">Mic: Off</span>
+                  </button>
+                </div>
+                <div class="video-aspect-badge">16:9 CINEMATIC</div>
+              </div>
+            </div>
+
+            <div class="case-content">
+              <div class="case-meta">
+                <span class="case-client">COMMERCIAL CREATIVE LAB</span>
+                <span class="case-industry">ACTIVEWEAR &amp; PERFORMANCE</span>
+              </div>
+              <h3 class="case-title">Multi-Format Dynamic Video Production &amp; Ad Creative Engine</h3>
+              <p class="case-desc">
+                High-frequency creative asset production engineered specifically for paid social scaling, testing multiple hooks, angles, and call-to-actions.
+              </p>
+              
+              <div class="case-details-grid">
+                <div>
+                  <h5 class="detail-label">CAMPAIGN OBJECTIVE</h5>
+                  <p class="detail-value">Scale top-of-funnel customer acquisition across Meta and YouTube.</p>
+                </div>
+                <div>
+                  <h5 class="detail-label">CREATIVE APPROACH</h5>
+                  <p class="detail-value">Rapid visual pacing, modular B-roll architecture, and native conversion elements.</p>
+                </div>
+              </div>
+
+              <div class="case-tags">
+                <span class="tag">Performance Ads</span>
+                <span class="tag">Creative Strategy</span>
+                <span class="tag">High-Volume Video</span>
+                <span class="tag">A/B Testing</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE STUDY 04: 77 Fitness Studio Vadapalani Launch (Interactive Embed Case Study) -->
+          <article class="case-card reveal">
+            <div class="case-video-container">
+              <div class="case-video-wrapper horizontal-frame instagram-frame">
+                <iframe 
+                  src="https://www.instagram.com/p/DUqHSRREdTU/embed/" 
+                  class="case-iframe"
+                  title="77 Fitness Studio Vadapalani Launch Reel"
+                  loading="lazy"
+                  allowfullscreen>
+                </iframe>
+                <div class="video-aspect-badge">OFFICIAL LAUNCH</div>
+              </div>
+            </div>
+
+            <div class="case-content">
+              <div class="case-meta">
+                <span class="case-client">77 FITNESS VADAPALANI</span>
+                <span class="case-industry">FACILITY EXPANSION &amp; LAUNCH</span>
+              </div>
+              <h3 class="case-title">Grand Opening Digital Blitz &amp; Local Market Domination</h3>
+              <p class="case-desc">
+                Comprehensive digital pre-launch strategy orchestrating social buzz, influencer preview events, and hyper-local targeted conversion campaigns for a marquee branch opening.
+              </p>
+              
+              <div class="case-details-grid">
+                <div>
+                  <h5 class="detail-label">CAMPAIGN OBJECTIVE</h5>
+                  <p class="detail-value">Achieve 100% capacity pre-booking targets prior to facility grand launch.</p>
+                </div>
+                <div>
+                  <h5 class="detail-label">CREATIVE APPROACH</h5>
+                  <p class="detail-value">Teaser campaigns, VIP behind-the-scenes walkthroughs, and geo-fenced lead capture.</p>
+                </div>
+              </div>
+
+              <div class="case-tags">
+                <span class="tag">Launch Strategy</span>
+                <span class="tag">Event Production</span>
+                <span class="tag">Lead Funnels</span>
+                <span class="tag">Influencer Hosting</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         OUR APPROACH SECTION
+         ============================================== -->
+    <section class="section approach-section" id="approach">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">METHODOLOGY</div>
+          <h2 class="section-title">STRATEGY FIRST. IMPACT ALWAYS.</h2>
+          <p class="section-subtitle">
+            Our systematic four-step execution framework ensures every creative piece connects directly to commercial growth.
+          </p>
         </div>
 
-        <!-- Item 5 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" onclick="toggleFaq(this)">
-            <span>What can I watch on 24FPS PRODUCTION?</span>
-            <i class="fas fa-plus faq-toggle-icon"></i>
-          </button>
-          <div class="faq-answer-panel">
-            <p>24FPS PRODUCTION has an extensive library of feature commercials, documentaries, brand films, social media reels, CGI motion graphics, and full-stack web builds. Watch marquee campaigns for 77 Fitness Studio, GNC India, Aroos Makeover, High On Fitness, and more.</p>
+        <div class="approach-timeline">
+
+          <div class="approach-step reveal">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h3 class="step-title">DISCOVER</h3>
+              <p class="step-desc">
+                Understand the brand, audience, competitors, and business goals. We audit past campaign data, analyze niche competitors, and uncover the unique emotional hooks that will resonate with your target consumer.
+              </p>
+              <ul class="step-deliverables">
+                <li>Brand &amp; Competitor Audit</li>
+                <li>Customer Persona Profiling</li>
+                <li>Growth Opportunity Roadmapping</li>
+              </ul>
+            </div>
           </div>
+
+          <div class="approach-step reveal delay-1">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h3 class="step-title">STRATEGIZE</h3>
+              <p class="step-desc">
+                Build a clear marketing strategy with measurable objectives. We map out full-funnel customer journeys, media spend allocation, creative moodboards, and specific conversion targets.
+              </p>
+              <ul class="step-deliverables">
+                <li>Omnichannel Media Architecture</li>
+                <li>Creative Direction &amp; Storyboards</li>
+                <li>Conversion Tracking Protocol</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="approach-step reveal delay-2">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h3 class="step-title">CREATE</h3>
+              <p class="step-desc">
+                Develop compelling campaigns, content, and digital experiences. Our in-house production crew executes cinematic video shoots, photography, and high-converting landing pages.
+              </p>
+              <ul class="step-deliverables">
+                <li>4K Commercial &amp; Reel Production</li>
+                <li>Ad Copywriting &amp; Hook Generation</li>
+                <li>Conversion-Engineered Web Pages</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="approach-step reveal delay-3">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <h3 class="step-title">OPTIMIZE</h3>
+              <p class="step-desc">
+                Measure performance, learn from the data, and continuously improve campaign effectiveness. We ruthlessly iterate on creative variations, audience segments, and funnel bottlenecks.
+              </p>
+              <ul class="step-deliverables">
+                <li>Live Ad Bid &amp; Budget Optimization</li>
+                <li>Creative Fatigue Replacement</li>
+                <li>Transparent Performance Reviews</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         WHY CHOOSE US SECTION
+         ============================================== -->
+    <section class="section why-us-section" id="why-us">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">THE 24FPS DIFFERENCE</div>
+          <h2 class="section-title">
+            MORE THAN MARKETING.<br>
+            WE BUILD MOMENTUM.
+          </h2>
+          <p class="section-subtitle">
+            Most agencies make pretty videos that don't convert, or run ads with generic visuals. We marry cinematic excellence with disciplined growth engineering.
+          </p>
         </div>
 
-        <!-- Item 6 -->
-        <div class="faq-item">
-          <button class="faq-question-btn" onclick="toggleFaq(this)">
-            <span>Is 24FPS PRODUCTION good for startups and new brands?</span>
-            <i class="fas fa-plus faq-toggle-icon"></i>
-          </button>
-          <div class="faq-answer-panel">
-            <p>Yes! We have tailored growth starter plans built specifically for emerging brands, local businesses, and creators. We handle everything from scriptwriting, lighting, and filming to editing, sound sync, and Meta ad campaign management.</p>
+        <div class="why-us-grid">
+
+          <div class="why-card reveal">
+            <div class="why-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
+            <h3 class="why-title">Creative Thinking Backed by Data</h3>
+            <p class="why-desc">We never rely on creative guesswork. Every visual concept, angle, and script is informed by customer analytics and market trends.</p>
+          </div>
+
+          <div class="why-card reveal delay-1">
+            <div class="why-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+            </div>
+            <h3 class="why-title">Tailored to Business Objectives</h3>
+            <p class="why-desc">No boilerplate packages. Your growth targets, revenue goals, and brand equity metrics dictate the entire scope of our partnership.</p>
+          </div>
+
+          <div class="why-card reveal delay-2">
+            <div class="why-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="why-title">Audience-First Planning</h3>
+            <p class="why-desc">We speak the native visual language of modern fitness and lifestyle culture, crafting narratives that build true brand devotion.</p>
+          </div>
+
+          <div class="why-card reveal">
+            <div class="why-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                <line x1="7" y1="2" x2="7" y2="22"></line>
+                <line x1="17" y1="2" x2="17" y2="22"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <line x1="2" y1="7" x2="7" y2="7"></line>
+                <line x1="2" y1="17" x2="7" y2="17"></line>
+                <line x1="17" y1="17" x2="22" y2="17"></line>
+                <line x1="17" y1="7" x2="22" y2="7"></line>
+              </svg>
+            </div>
+            <h3 class="why-title">Strong Visual Storytelling</h3>
+            <p class="why-desc">24 frames per second cinematic execution. Rich sound design, dramatic color grades, and authentic human emotion.</p>
+          </div>
+
+          <div class="why-card reveal delay-1">
+            <div class="why-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="why-title">Rigorous Performance Measurement</h3>
+            <p class="why-desc">We measure what matters: customer acquisition cost (CAC), return on ad spend (ROAS), and real lifetime brand value.</p>
+          </div>
+
+          <div class="why-card reveal delay-2">
+            <div class="why-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="why-title">Transparent Communication</h3>
+            <p class="why-desc">No corporate smoke and mirrors. You get direct access to our strategists, clear live reporting dashboards, and actionable insights.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         CAPABILITIES & OPERATIONAL EXCELLENCE
+         (Truthful capabilities - no fabricated stats)
+         ============================================== -->
+    <section class="section capabilities-section" id="capabilities">
+      <div class="container">
+        <div class="capabilities-box reveal">
+          <div class="capabilities-header">
+            <div class="section-tag">OUR STANDARDS</div>
+            <h2 class="section-title">BUILT FOR SCALE, QUALITY &amp; EXECUTION.</h2>
+            <p class="section-subtitle">
+              We operate as an agile, dedicated growth partner. Here is what we bring to every client engagement:
+            </p>
+          </div>
+
+          <div class="capabilities-grid">
+            <div class="cap-item">
+              <div class="cap-indicator"></div>
+              <h4>Cinema Production Gear</h4>
+              <p>4K Ultra-HD cinematography, gimbal stabilization, studio lighting &amp; multi-track audio engineering.</p>
+            </div>
+            <div class="cap-item">
+              <div class="cap-indicator"></div>
+              <h4>Full-Funnel Media Buying</h4>
+              <p>Certified execution across Meta Ads Manager, Google Ads, YouTube, and retargeting architectures.</p>
+            </div>
+            <div class="cap-item">
+              <div class="cap-indicator"></div>
+              <h4>Rapid Creative Turnaround</h4>
+              <p>Fast-cycle content sprints delivering fresh creative angles to consistently beat ad fatigue.</p>
+            </div>
+            <div class="cap-item">
+              <div class="cap-indicator"></div>
+              <h4>Verified Platform Integration</h4>
+              <p>Custom landing pages with clean pixel integration, server-side conversion API, and analytics setups.</p>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Secondary Email CTA -->
-      <div class="faq-cta-bottom">
-        <h3 class="netflix-hero-prompt">Ready to watch? Enter your email to create or restart your membership.</h3>
-        <form class="netflix-email-form" id="faqEmailForm" onsubmit="handleEmailSubmit(event, 'faqEmail')">
-          <div class="netflix-input-group">
-            <input type="email" id="faqEmail" class="netflix-input-field" placeholder=" " required />
-            <label for="faqEmail" class="netflix-input-label">Email address</label>
+    <!-- ==============================================
+         PARTNER ROSTER / CLIENTS SHOWCASE
+         ============================================== -->
+    <section class="section clients-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">NETWORK</div>
+          <h2 class="section-title">BRANDS WE COLLABORATE WITH</h2>
+          <p class="section-subtitle">
+            Partnering with visionaries in fitness, personal care, and high-performance lifestyle.
+          </p>
+        </div>
+
+        <div class="clients-grid reveal">
+          <div class="client-logo-card">
+            <span class="client-brand-name">77 FITNESS STUDIO</span>
+            <span class="client-type">Premium Fitness Center</span>
           </div>
-          <button type="submit" class="netflix-btn netflix-btn-red netflix-btn-hero">
-            <span>Get Started</span>
-            <i class="fas fa-chevron-right btn-chevron"></i>
-          </button>
-        </form>
-        <p class="netflix-form-success" id="faqSuccessMsg"><i class="fas fa-check-circle"></i> Thank you! Our team will reach out with your 24FPS PRODUCTION membership credentials.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       NETFLIX FOOTER
-       ============================================================ -->
-  <footer class="netflix-footer">
-    <div class="netflix-container">
-      <p class="footer-call-line">
-        Questions? Call <a href="tel:0008009191694">000-800-919-1694</a> or contact <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer">@24fpsproduction.in</a>
-      </p>
-
-      <div class="footer-links-grid">
-        <div class="footer-col">
-          <a href="#faq">FAQ</a>
-          <a href="#trending">Investor Relations</a>
-          <a href="#">Privacy</a>
-          <a href="#">Speed Test</a>
-        </div>
-        <div class="footer-col">
-          <a href="#faq">Help Centre</a>
-          <a href="#">Jobs</a>
-          <a href="#">Cookie Preferences</a>
-          <a href="#">Legal Notices</a>
-        </div>
-        <div class="footer-col">
-          <a href="#heroSection">Account</a>
-          <a href="#reasons">Ways to Watch</a>
-          <a href="#">Corporate Information</a>
-          <a href="#reels">Only on 24FPS PRODUCTION</a>
-        </div>
-        <div class="footer-col">
-          <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer">Media Centre</a>
-          <a href="#">Terms of Use</a>
-          <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer">Contact Us</a>
-          <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram Profile</a>
+          <div class="client-logo-card">
+            <span class="client-brand-name">AROOS MAKEOVER</span>
+            <span class="client-type">Luxury Bridal &amp; Beauty</span>
+          </div>
+          <div class="client-logo-card">
+            <span class="client-brand-name">GNC INDIA</span>
+            <span class="client-type">Sports Nutrition &amp; Wellness</span>
+          </div>
+          <div class="client-logo-card">
+            <span class="client-brand-name">THE MIGHTY FITNESS</span>
+            <span class="client-type">Strength &amp; Conditioning</span>
+          </div>
+          <div class="client-logo-card">
+            <span class="client-brand-name">HIGH ON FITNESS</span>
+            <span class="client-type">Elite Athletic Training</span>
+          </div>
+          <div class="client-logo-card">
+            <span class="client-brand-name">77 VADAPALANI</span>
+            <span class="client-type">Flagship Gym Expansion</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Footer Language Selector -->
-      <div class="footer-lang-wrap">
-        <div class="netflix-lang-picker">
-          <i class="fas fa-globe lang-icon"></i>
-          <select id="footerLangSelect" aria-label="Language Selector">
-            <option value="en">English</option>
-            <option value="hi">हिन्दी</option>
-          </select>
-          <i class="fas fa-caret-down caret-icon"></i>
+    <!-- ==============================================
+         CONTACT / GROWTH ENQUIRY FORM
+         ============================================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-wrapper">
+          
+          <div class="contact-info-col reveal">
+            <div class="section-tag">GET IN TOUCH</div>
+            <h2 class="contact-title">
+              READY TO MOVE<br>
+              <span class="text-accent">YOUR BRAND FORWARD?</span>
+            </h2>
+            <p class="contact-desc">
+              Schedule a strategic consultation. Tell us about your brand, growth goals, and upcoming initiatives. We'll outline how our creative and performance engine can take you there.
+            </p>
+
+            <div class="contact-direct-items">
+              <div class="contact-direct-item">
+                <span class="contact-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </span>
+                <div>
+                  <div class="direct-label">Official Instagram</div>
+                  <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer" class="direct-value">@24fpsproduction.in</a>
+                </div>
+              </div>
+
+              <div class="contact-direct-item">
+                <span class="contact-icon">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <div class="direct-label">Location</div>
+                  <span class="direct-value">Chennai &bull; Operating Pan-India</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-social-pill">
+              <span>Direct DM via Instagram for instant creative briefing</span>
+            </div>
+          </div>
+
+          <!-- Growth Enquiry Form -->
+          <div class="contact-form-col reveal delay-1">
+            <form class="growth-form" id="growthContactForm" novalidate>
+              <h3 class="form-title">Start Your Growth Brief</h3>
+              <p class="form-subtitle">Fill out the form below. We typically respond within 24 hours.</p>
+
+              <!-- Form Success / Error Notice Box -->
+              <div class="form-feedback-msg" id="formFeedback" role="alert" aria-live="assertive"></div>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="fullName">Full Name <span class="required">*</span></label>
+                  <input type="text" id="fullName" name="fullName" placeholder="e.g. Rahul Sharma" required autocomplete="name">
+                  <span class="error-msg" id="fullNameError"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Work Email <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="rahul@yourbrand.com" required autocomplete="email">
+                  <span class="error-msg" id="emailError"></span>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="phone">Phone / WhatsApp</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel">
+                  <span class="error-msg" id="phoneError"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="brandName">Company / Brand Name <span class="required">*</span></label>
+                  <input type="text" id="brandName" name="brandName" placeholder="e.g. Apex Fitness Studio" required>
+                  <span class="error-msg" id="brandNameError"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="serviceNeeded">Primary Service Needed <span class="required">*</span></label>
+                <select id="serviceNeeded" name="serviceNeeded" required>
+                  <option value="" disabled selected>Select a service focus</option>
+                  <option value="content_production">Content &amp; Creative Video Production</option>
+                  <option value="performance_marketing">Performance Marketing &amp; Paid Ads</option>
+                  <option value="brand_strategy">Brand Strategy &amp; Positioning</option>
+                  <option value="social_management">Social Media Growth &amp; Content</option>
+                  <option value="influencer_marketing">Influencer Marketing Campaign</option>
+                  <option value="web_cro">Website &amp; Conversion Optimization</option>
+                  <option value="full_growth">Comprehensive Full-Funnel Growth</option>
+                </select>
+                <span class="error-msg" id="serviceNeededError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="budgetRange">Estimated Monthly Marketing Budget</label>
+                <select id="budgetRange" name="budgetRange">
+                  <option value="" disabled selected>Select investment range</option>
+                  <option value="standard">₹50,000 – ₹1,50,000</option>
+                  <option value="growth">₹1,50,000 – ₹3,00,000</option>
+                  <option value="scale">₹3,00,000 – ₹6,00,000</option>
+                  <option value="enterprise">₹6,00,000+ / Custom Retainer</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="projectDetails">Project Details &amp; Key Objectives <span class="required">*</span></label>
+                <textarea id="projectDetails" name="projectDetails" rows="4" placeholder="Tell us about your brand, current challenges, timeline, and what success looks like for you..." required></textarea>
+                <span class="error-msg" id="projectDetailsError"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block submit-btn" id="submitBtn">
+                <span class="btn-text">Submit Growth Brief</span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+              </button>
+
+              <p class="form-privacy-note">
+                Your data is held with strict confidentiality. No spam, ever.
+              </p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================
+       FOOTER
+       ============================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="#top" class="brand-logo footer-logo" aria-label="24FPS PRODUCTION">
+            <img src="logo-transparent.png" alt="24FPS PRODUCTION" class="logo-img" width="130" height="39">
+            <span class="logo-text">24FPS <span>PRODUCTION</span></span>
+          </a>
+          <p class="footer-bio">
+            From impactful brand campaigns to high-converting digital strategies. A specialized digital marketing and commercial production agency for lifestyle and fitness brands.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Visit 24FPS Production on Instagram">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>@24fpsproduction.in</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#top">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Case Studies</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#approach">Our Approach</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Brand Strategy</a></li>
+            <li><a href="#services">Performance Marketing</a></li>
+            <li><a href="#services">Social Media Strategy</a></li>
+            <li><a href="#services">Creative &amp; Video Production</a></li>
+            <li><a href="#services">Influencer Campaigns</a></li>
+            <li><a href="#services">Conversion Optimization</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-col-title">Specialization</h4>
+          <ul class="footer-links">
+            <li><a href="#industries">Fitness &amp; Gyms</a></li>
+            <li><a href="#industries">Sports Nutrition</a></li>
+            <li><a href="#industries">Lifestyle &amp; Fashion</a></li>
+            <li><a href="#industries">Health &amp; Wellness</a></li>
+            <li><a href="#industries">Beauty &amp; Personal Care</a></li>
+            <li><a href="#industries">Activewear Brands</a></li>
+          </ul>
         </div>
       </div>
 
-      <p class="footer-country">24FPS PRODUCTION India · Where Creativity Meets Technology</p>
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; 2026 <strong>24FPS PRODUCTION</strong>. All rights reserved. Built with cinematic precision.
+        </p>
+        <div class="footer-bottom-links">
+          <a href="#top" class="back-to-top" id="backToTopBtn" aria-label="Back to top">
+            Back to Top &uarr;
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
-
-  <!-- ============================================================
-       NETFLIX VIDEO PREVIEW MODAL (POPUP PLAYER)
-       ============================================================ -->
-  <div class="netflix-modal" id="videoModal">
-    <div class="netflix-modal-backdrop" onclick="closeVideoModal()"></div>
-    <div class="netflix-modal-dialog">
-      <button class="modal-close-btn" onclick="closeVideoModal()" aria-label="Close modal">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <div class="modal-media-frame">
-        <video id="modalVideoPlayer" class="modal-video" playsinline loop autoplay controls></video>
-        <iframe id="modalIframePlayer" class="modal-iframe" frameborder="0" scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
-
-        <!-- Modal Sound Toggle Overlay Button -->
-        <button class="modal-mic-btn" id="modalMicBtn" onclick="toggleModalMic()">
-          <i class="fas fa-microphone" id="modalMicIcon"></i>
-          <span id="modalMicText">MIC ON</span>
-        </button>
-      </div>
-
-      <div class="modal-details-body">
-        <div class="modal-meta-row">
-          <span class="modal-match" id="modalMatchBadge">98% Match</span>
-          <span class="modal-tag">2026</span>
-          <span class="modal-badge-age">U/A 13+</span>
-          <span class="modal-tag">1m 25s</span>
-          <span class="modal-badge-hd">4K Ultra HD</span>
-          <span class="modal-badge-hd">5.1 Audio</span>
-        </div>
-
-        <h2 class="modal-title" id="modalTitle">Title</h2>
-        <p class="modal-category" id="modalCategory">Commercial · Fitness</p>
-        <p class="modal-desc" id="modalDesc">Description</p>
-
-        <div class="modal-action-row">
-          <a href="#" id="modalIgLink" target="_blank" rel="noopener noreferrer" class="netflix-btn netflix-btn-red">
-            <i class="fab fa-instagram"></i> View on Instagram
-          </a>
-          <button class="netflix-btn netflix-btn-dark" onclick="toggleModalMic()">
-            <i class="fas fa-volume-high"></i> Toggle Audio
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================================
-       NETFLIX SIGN IN MODAL
-       ============================================================ -->
-  <div class="netflix-modal" id="signInModal">
-    <div class="netflix-modal-backdrop" onclick="closeSignInModal()"></div>
-    <div class="netflix-signin-dialog">
-      <button class="modal-close-btn" onclick="closeSignInModal()" aria-label="Close modal">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <h2 class="signin-heading">Sign In</h2>
-      <form class="signin-form" onsubmit="handleSignInSubmit(event)">
-        <div class="netflix-input-group">
-          <input type="text" id="signInUser" class="netflix-input-field" placeholder=" " required />
-          <label for="signInUser" class="netflix-input-label">Email or mobile number</label>
-        </div>
-        <div class="netflix-input-group" style="margin-top: 1rem;">
-          <input type="password" id="signInPass" class="netflix-input-field" placeholder=" " required />
-          <label for="signInPass" class="netflix-input-label">Password</label>
-        </div>
-        <button type="submit" class="netflix-btn netflix-btn-red netflix-btn-block">Sign In</button>
-
-        <div class="signin-options-row">
-          <label class="remember-label">
-            <input type="checkbox" checked />
-            <span>Remember me</span>
-          </label>
-          <a href="#" class="help-link">Need help?</a>
-        </div>
-      </form>
-
-      <div class="signin-bottom-info">
-        <p class="new-to-nf">New to 24FPS PRODUCTION? <a href="#heroSection" onclick="closeSignInModal()">Sign up now.</a></p>
-        <p class="recaptcha-notice">This page is protected by Google reCAPTCHA to ensure you're not a bot.</p>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>

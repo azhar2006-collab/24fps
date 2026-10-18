@@ -1,349 +1,386 @@
-/* ============================================================
-   24 FPS — NETFLIX INDIA INTERACTIVE ENGINE
-   ============================================================ */
+/**
+ * 24FPS PRODUCTION — Premium Lifestyle & Fitness Digital Marketing Agency
+ * Vanilla JavaScript (ES6+) — Zero Frameworks, Production Quality
+ */
 
-(function () {
+document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  /* ---- GLOBAL AUDIO & MODAL STATE ---- */
-  let currentModalVideo = null;
-  let isModalMuted = false;
+  /* --------------------------------------------------------------------------
+     1. NAVIGATION SCROLL & ACTIVE STATE
+     -------------------------------------------------------------------------- */
+  const siteHeader = document.getElementById('siteHeader');
+  const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
+  const sections = document.querySelectorAll('section[id], header[id]');
 
-  /* ---- CAROUSEL SCROLLER ---- */
-  window.scrollTrending = function (direction) {
-    const track = document.getElementById('trendingTrack');
-    if (!track) return;
-    const scrollAmount = 450 * direction;
-    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  const handleHeaderScroll = () => {
+    if (window.scrollY > 40) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
   };
 
-  /* ---- FAQ ACCORDION TOGGLE ---- */
-  window.toggleFaq = function (btnEl) {
-    const item = btnEl.closest('.faq-item');
-    if (!item) return;
+  window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+  handleHeaderScroll();
 
-    const isActive = item.classList.contains('active');
+  // Scrollspy: Highlight nav items on scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  };
 
-    // Close all other FAQ items (authentic Netflix behavior)
-    document.querySelectorAll('.faq-item').forEach(el => {
-      el.classList.remove('active');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
     });
+  }, observerOptions);
 
-    if (!isActive) {
-      item.classList.add('active');
-    }
-  };
+  sections.forEach(section => {
+    navObserver.observe(section);
+  });
 
-  /* ---- EMAIL SUBMISSION FEEDBACK ---- */
-  window.handleEmailSubmit = function (e, inputId) {
-    e.preventDefault();
-    const input = document.getElementById(inputId);
-    if (!input || !input.value) return;
+  /* --------------------------------------------------------------------------
+     2. MOBILE DRAWER NAVIGATION
+     -------------------------------------------------------------------------- */
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+  const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-drawer-footer a');
 
-    const successId = inputId === 'heroEmail' ? 'heroSuccessMsg' : 'faqSuccessMsg';
-    const successEl = document.getElementById(successId);
-    if (successEl) {
-      successEl.classList.add('show');
-      input.value = '';
-      setTimeout(() => {
-        successEl.classList.remove('show');
-      }, 5000);
-    }
-  };
-
-  /* ---- SIGN IN MODAL ---- */
-  const signInModal = document.getElementById('signInModal');
-  const navSignInBtn = document.getElementById('navSignInBtn');
-
-  if (navSignInBtn) {
-    navSignInBtn.addEventListener('click', () => {
-      openSignInModal();
-    });
-  }
-
-  window.openSignInModal = function () {
-    if (signInModal) {
-      signInModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-  };
-
-  window.closeSignInModal = function () {
-    if (signInModal) {
-      signInModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  };
-
-  window.handleSignInSubmit = function (e) {
-    e.preventDefault();
-    alert('Welcome to 24FPS PRODUCTION Member Portal! Your session is verified.');
-    closeSignInModal();
-  };
-
-  /* ---- VIDEO PREVIEW MODAL ---- */
-  const videoModal = document.getElementById('videoModal');
-  const modalVideoPlayer = document.getElementById('modalVideoPlayer');
-  const modalIframePlayer = document.getElementById('modalIframePlayer');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalCategory = document.getElementById('modalCategory');
-  const modalDesc = document.getElementById('modalDesc');
-  const modalIgLink = document.getElementById('modalIgLink');
-  const modalMicBtn = document.getElementById('modalMicBtn');
-  const modalMicIcon = document.getElementById('modalMicIcon');
-  const modalMicText = document.getElementById('modalMicText');
-
-  window.openVideoModal = function (videoId, title, desc, category, videoSrc, igLink) {
-    if (!videoModal) return;
-
-    if (modalTitle) modalTitle.textContent = title;
-    if (modalCategory) modalCategory.textContent = category;
-    if (modalDesc) modalDesc.textContent = desc;
-    if (modalIgLink) modalIgLink.href = igLink || 'https://www.instagram.com/24fpsproduction.in';
-
-    // Show native video player, hide iframe
-    if (modalIframePlayer) {
-      modalIframePlayer.classList.remove('active');
-      modalIframePlayer.src = '';
-    }
-
-    if (modalVideoPlayer) {
-      modalVideoPlayer.classList.add('active');
-      modalVideoPlayer.src = videoSrc;
-      modalVideoPlayer.muted = false; // Start unmuted in modal with live sound!
-      modalVideoPlayer.volume = 1.0;
-      isModalMuted = false;
-      currentModalVideo = modalVideoPlayer;
-      modalVideoPlayer.play().catch(() => {
-        // If browser blocks autoplay with sound, mute and play
-        modalVideoPlayer.muted = true;
-        isModalMuted = true;
-        modalVideoPlayer.play().catch(() => {});
-      });
-
-      updateModalMicButton();
-    }
-
-    videoModal.classList.add('active');
+  const openMobileNav = () => {
+    mobileNav.classList.add('open');
+    mobileNavOverlay.classList.add('open');
+    mobileMenuBtn.classList.add('active');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    mobileNav.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   };
 
-  window.openIframeModal = function (iframeSrc, title, desc, category, igLink) {
-    if (!videoModal) return;
-
-    if (modalTitle) modalTitle.textContent = title;
-    if (modalCategory) modalCategory.textContent = category;
-    if (modalDesc) modalDesc.textContent = desc;
-    if (modalIgLink) modalIgLink.href = igLink || 'https://www.instagram.com/24fpsproduction.in';
-
-    // Hide native video player, show iframe
-    if (modalVideoPlayer) {
-      modalVideoPlayer.pause();
-      modalVideoPlayer.classList.remove('active');
-      modalVideoPlayer.src = '';
-    }
-
-    if (modalIframePlayer) {
-      modalIframePlayer.classList.add('active');
-      modalIframePlayer.src = iframeSrc;
-    }
-
-    videoModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  const closeMobileNav = () => {
+    mobileNav.classList.remove('open');
+    mobileNavOverlay.classList.remove('open');
+    mobileMenuBtn.classList.remove('active');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
   };
 
-  window.closeVideoModal = function () {
-    if (videoModal) {
-      videoModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    if (modalVideoPlayer) {
-      modalVideoPlayer.pause();
-      modalVideoPlayer.src = '';
-    }
-    if (modalIframePlayer) {
-      modalIframePlayer.src = '';
-    }
-  };
-
-  window.toggleModalMic = function () {
-    if (!currentModalVideo) return;
-    isModalMuted = !isModalMuted;
-    currentModalVideo.muted = isModalMuted;
-    updateModalMicButton();
-  };
-
-  function updateModalMicButton() {
-    if (!modalMicBtn || !modalMicIcon || !modalMicText) return;
-    if (!isModalMuted) {
-      modalMicIcon.className = 'fas fa-microphone';
-      modalMicText.textContent = 'MIC ON';
-      modalMicBtn.style.background = '#10b981';
-      modalMicBtn.style.color = '#000';
-    } else {
-      modalMicIcon.className = 'fas fa-microphone-slash';
-      modalMicText.textContent = 'MIC OFF';
-      modalMicBtn.style.background = 'rgba(0,0,0,0.85)';
-      modalMicBtn.style.color = '#fff';
-    }
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.contains('open');
+      if (isOpen) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
+    });
   }
 
-  /* ---- PER-REEL MIC ON/OFF CONTROLS (FEATURED SECTION) ---- */
-  window.toggleReelMic = function (videoId, btnEl) {
-    const video = document.getElementById(videoId);
-    if (!video) return;
+  if (mobileCloseBtn) {
+    mobileCloseBtn.addEventListener('click', closeMobileNav);
+  }
 
-    const isMuted = video.muted;
-    if (isMuted) {
-      // Unmute & Play Sound
-      video.muted = false;
-      video.volume = 1.0;
-      if (btnEl) {
-        btnEl.classList.add('mic-active');
-        const icon = btnEl.querySelector('i');
-        if (icon) icon.className = 'fas fa-microphone';
-        const label = btnEl.querySelector('.mic-label');
-        if (label) label.textContent = 'MIC ON';
-        const bars = btnEl.querySelector('.audio-bars');
-        if (bars) bars.classList.add('active');
-      }
-    } else {
-      // Mute
-      video.muted = true;
-      if (btnEl) {
-        btnEl.classList.remove('mic-active');
-        const icon = btnEl.querySelector('i');
-        if (icon) icon.className = 'fas fa-microphone-slash';
-        const label = btnEl.querySelector('.mic-label');
-        if (label) label.textContent = 'MIC OFF';
-        const bars = btnEl.querySelector('.audio-bars');
-        if (bars) bars.classList.remove('active');
-      }
+  if (mobileNavOverlay) {
+    mobileNavOverlay.addEventListener('click', closeMobileNav);
+  }
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) {
+      closeMobileNav();
     }
+  });
+
+  /* --------------------------------------------------------------------------
+     3. HERO VIDEO & SOUND (MIC ON / OFF)
+     -------------------------------------------------------------------------- */
+  const heroVideo = document.getElementById('heroVideo');
+  const heroAudioToggle = document.getElementById('heroAudioToggle');
+  const heroAudioLabel = document.getElementById('heroAudioLabel');
+
+  if (heroVideo && heroAudioToggle) {
+    heroAudioToggle.addEventListener('click', () => {
+      // Toggle muted
+      if (heroVideo.muted) {
+        heroVideo.muted = false;
+        heroAudioToggle.classList.add('active');
+        if (heroAudioLabel) heroAudioLabel.textContent = 'Mute Sound';
+        
+        // Mute any other playing case studies
+        muteAllOtherVideos(heroVideo);
+      } else {
+        heroVideo.muted = true;
+        heroAudioToggle.classList.remove('active');
+        if (heroAudioLabel) heroAudioLabel.textContent = 'Unmute Sound';
+      }
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     4. CASE STUDY VIDEO PLAYERS & MIC SOUND TOGGLES
+     (Requirement: "make vidoes with mic on and off sound and the videos should be horizontal")
+     -------------------------------------------------------------------------- */
+  const playPauseBtns = document.querySelectorAll('.play-pause-btn');
+  const micToggleBtns = document.querySelectorAll('.mic-toggle-btn');
+  const caseVideos = document.querySelectorAll('.case-video');
+
+  const muteAllOtherVideos = (currentActiveVideo) => {
+    // If hero video is unmuted and current isn't hero, mute hero
+    if (heroVideo && heroVideo !== currentActiveVideo && !heroVideo.muted) {
+      heroVideo.muted = true;
+      if (heroAudioToggle) heroAudioToggle.classList.remove('active');
+      if (heroAudioLabel) heroAudioLabel.textContent = 'Unmute Sound';
+    }
+
+    // Mute all other case study videos
+    caseVideos.forEach(v => {
+      if (v !== currentActiveVideo) {
+        v.muted = true;
+        const parentCard = v.closest('.case-card');
+        if (parentCard) {
+          const micBtn = parentCard.querySelector('.mic-toggle-btn');
+          const micLabel = parentCard.querySelector('.mic-status-label');
+          if (micBtn) micBtn.classList.remove('live');
+          if (micLabel) micLabel.textContent = 'Mic: Off';
+        }
+      }
+    });
   };
 
-  /* ---- MASTER AUDIO TOGGLE ---- */
-  window.toggleAllReelsMic = function () {
-    const masterBtn = document.getElementById('masterMicBtn');
-    const masterIcon = document.getElementById('masterMicIcon');
-    const masterLabel = document.getElementById('masterMicLabel');
-    const allVideos = document.querySelectorAll('.hcard-video');
-    const allMicBtns = document.querySelectorAll('.netflix-mic-toggle');
+  // Set default case videos to muted
+  caseVideos.forEach(video => {
+    video.muted = true;
 
-    let anyUnmuted = false;
-    allVideos.forEach(v => {
-      if (!v.muted) anyUnmuted = true;
+    // Toggle on video surface click
+    video.addEventListener('click', () => {
+      togglePlayVideo(video);
     });
 
-    const targetMuted = anyUnmuted; // If any unmuted, mute all; else unmute all
-
-    allVideos.forEach(v => {
-      v.muted = targetMuted;
-      if (!targetMuted) {
-        v.volume = 1.0;
-        v.play().catch(() => {});
+    video.addEventListener('play', () => {
+      const parentCard = video.closest('.case-card');
+      if (parentCard) {
+        const btn = parentCard.querySelector('.play-pause-btn');
+        if (btn) btn.classList.add('playing');
       }
     });
 
-    allMicBtns.forEach(btn => {
-      const icon = btn.querySelector('i');
-      const label = btn.querySelector('.mic-label');
-      const bars = btn.querySelector('.audio-bars');
-      if (!targetMuted) {
-        btn.classList.add('mic-active');
-        if (icon) icon.className = 'fas fa-microphone';
-        if (label) label.textContent = 'MIC ON';
-        if (bars) bars.classList.add('active');
-      } else {
-        btn.classList.remove('mic-active');
-        if (icon) icon.className = 'fas fa-microphone-slash';
-        if (label) label.textContent = 'MIC OFF';
-        if (bars) bars.classList.remove('active');
+    video.addEventListener('pause', () => {
+      const parentCard = video.closest('.case-card');
+      if (parentCard) {
+        const btn = parentCard.querySelector('.play-pause-btn');
+        if (btn) btn.classList.remove('playing');
       }
     });
+  });
 
-    if (masterBtn && masterIcon && masterLabel) {
-      if (!targetMuted) {
-        masterBtn.classList.add('active');
-        masterIcon.className = 'fas fa-microphone';
-        masterLabel.textContent = 'ALL MICS: LIVE';
-      } else {
-        masterBtn.classList.remove('active');
-        masterIcon.className = 'fas fa-microphone-slash';
-        masterLabel.textContent = 'ALL MICS: MUTED';
-      }
-    }
-  };
-
-  /* ---- PLAY/PAUSE TOGGLE ---- */
-  window.togglePlayPause = function (videoId) {
-    const video = document.getElementById(videoId);
-    if (!video) return;
+  const togglePlayVideo = (video) => {
     if (video.paused) {
-      video.play();
+      video.play().catch(err => {
+        console.warn('Playback restricted or prevented:', err);
+      });
     } else {
       video.pause();
     }
   };
 
-  /* ---- IFRAME SOUND TOGGLE (VISUAL FEEDBACK) ---- */
-  window.toggleIframeSound = function (btnEl) {
-    if (!btnEl) return;
-    const isActive = btnEl.classList.contains('mic-active');
-    const icon = btnEl.querySelector('i');
-    const label = btnEl.querySelector('.mic-label');
-    const bars = btnEl.querySelector('.audio-bars');
-
-    if (!isActive) {
-      btnEl.classList.add('mic-active');
-      if (icon) icon.className = 'fas fa-microphone';
-      if (label) label.textContent = 'MIC ON';
-      if (bars) bars.classList.add('active');
-    } else {
-      btnEl.classList.remove('mic-active');
-      if (icon) icon.className = 'fas fa-microphone-slash';
-      if (label) label.textContent = 'MIC OFF';
-      if (bars) bars.classList.remove('active');
-    }
-  };
-
-  /* ---- LANGUAGE PICKER INTERACTION ---- */
-  const langSelect = document.getElementById('langSelect');
-  const footerLangSelect = document.getElementById('footerLangSelect');
-
-  function syncLanguage(val) {
-    if (langSelect) langSelect.value = val;
-    if (footerLangSelect) footerLangSelect.value = val;
-    if (val === 'hi') {
-      const heroTitle = document.querySelector('.netflix-hero-title');
-      const heroSubtitle = document.querySelector('.netflix-hero-subtitle');
-      const heroPrompt = document.querySelector('.netflix-hero-prompt');
-      if (heroTitle) heroTitle.textContent = 'अनलिमिटेड फिल्में, शोज़ और बहुत कुछ';
-      if (heroSubtitle) heroSubtitle.textContent = 'शुरुआत ₹149 से। कभी भी कैंसल करें।';
-      if (heroPrompt) heroPrompt.textContent = 'देखने के लिए तैयार हैं? अपनी मेंबरशिप बनाने के लिए अपना ईमेल डालें।';
-    } else {
-      const heroTitle = document.querySelector('.netflix-hero-title');
-      const heroSubtitle = document.querySelector('.netflix-hero-subtitle');
-      const heroPrompt = document.querySelector('.netflix-hero-prompt');
-      if (heroTitle) heroTitle.textContent = 'Unlimited movies, shows, and more';
-      if (heroSubtitle) heroSubtitle.textContent = 'Starts at ₹149. Cancel anytime.';
-      if (heroPrompt) heroPrompt.textContent = 'Ready to watch? Enter your email to create or restart your membership.';
-    }
-  }
-
-  if (langSelect) {
-    langSelect.addEventListener('change', (e) => syncLanguage(e.target.value));
-  }
-  if (footerLangSelect) {
-    footerLangSelect.addEventListener('change', (e) => syncLanguage(e.target.value));
-  }
-
-  /* ---- ESCAPE KEY TO CLOSE MODALS ---- */
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeVideoModal();
-      closeSignInModal();
-    }
+  // Play / Pause Buttons
+  playPauseBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetId = btn.getAttribute('data-target');
+      const video = document.getElementById(targetId);
+      if (video) {
+        togglePlayVideo(video);
+      }
+    });
   });
 
-})();
+  // Mic (Sound On/Off) Buttons
+  micToggleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetId = btn.getAttribute('data-target');
+      const video = document.getElementById(targetId);
+      const label = btn.querySelector('.mic-status-label');
+
+      if (video) {
+        if (video.muted) {
+          // Unmute sound
+          video.muted = false;
+          btn.classList.add('live');
+          if (label) label.textContent = 'Mic: Live';
+
+          // If the video was paused, start playback so user hears sound
+          if (video.paused) {
+            video.play().catch(err => console.warn(err));
+          }
+
+          // Mute other videos so sounds don't overlap
+          muteAllOtherVideos(video);
+        } else {
+          // Mute sound
+          video.muted = true;
+          btn.classList.remove('live');
+          if (label) label.textContent = 'Mic: Off';
+        }
+      }
+    });
+  });
+
+  /* --------------------------------------------------------------------------
+     5. SCROLL REVEAL ANIMATIONS (IntersectionObserver)
+     -------------------------------------------------------------------------- */
+  const revealElements = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback if IntersectionObserver isn't supported
+    revealElements.forEach(el => el.classList.add('active'));
+  }
+
+  /* --------------------------------------------------------------------------
+     6. GROWTH ENQUIRY FORM VALIDATION & HANDLING
+     -------------------------------------------------------------------------- */
+  const growthForm = document.getElementById('growthContactForm');
+  const formFeedback = document.getElementById('formFeedback');
+  const submitBtn = document.getElementById('submitBtn');
+
+  if (growthForm) {
+    const fields = {
+      fullName: {
+        el: document.getElementById('fullName'),
+        errorEl: document.getElementById('fullNameError'),
+        validate: (val) => val.trim().length >= 2 ? '' : 'Please enter your full name.'
+      },
+      email: {
+        el: document.getElementById('email'),
+        errorEl: document.getElementById('emailError'),
+        validate: (val) => {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailRegex.test(val.trim()) ? '' : 'Please enter a valid work email address.';
+        }
+      },
+      brandName: {
+        el: document.getElementById('brandName'),
+        errorEl: document.getElementById('brandNameError'),
+        validate: (val) => val.trim().length >= 2 ? '' : 'Please enter your brand or company name.'
+      },
+      serviceNeeded: {
+        el: document.getElementById('serviceNeeded'),
+        errorEl: document.getElementById('serviceNeededError'),
+        validate: (val) => val ? '' : 'Please select a primary service.'
+      },
+      projectDetails: {
+        el: document.getElementById('projectDetails'),
+        errorEl: document.getElementById('projectDetailsError'),
+        validate: (val) => val.trim().length >= 10 ? '' : 'Please provide at least a brief summary of your project (min 10 characters).'
+      }
+    };
+
+    // Live validation listener on input
+    Object.keys(fields).forEach(key => {
+      const field = fields[key];
+      if (field.el) {
+        field.el.addEventListener('input', () => {
+          field.el.classList.remove('has-error');
+          if (field.errorEl) field.errorEl.textContent = '';
+          if (formFeedback) {
+            formFeedback.className = 'form-feedback-msg';
+            formFeedback.textContent = '';
+          }
+        });
+      }
+    });
+
+    growthForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let hasError = false;
+
+      // Validate required fields
+      Object.keys(fields).forEach(key => {
+        const field = fields[key];
+        const error = field.validate(field.el.value);
+        if (error) {
+          hasError = true;
+          field.el.classList.add('has-error');
+          if (field.errorEl) field.errorEl.textContent = error;
+        } else {
+          field.el.classList.remove('has-error');
+          if (field.errorEl) field.errorEl.textContent = '';
+        }
+      });
+
+      if (hasError) {
+        if (formFeedback) {
+          formFeedback.className = 'form-feedback-msg error';
+          formFeedback.textContent = 'Please fill out all required fields correctly before submitting.';
+        }
+        return;
+      }
+
+      // Simulate submission & provide genuine response
+      if (submitBtn) submitBtn.classList.add('loading');
+
+      setTimeout(() => {
+        if (submitBtn) submitBtn.classList.remove('loading');
+
+        const clientName = fields.fullName.el.value.trim();
+        const clientBrand = fields.brandName.el.value.trim();
+
+        if (formFeedback) {
+          formFeedback.className = 'form-feedback-msg success';
+          formFeedback.innerHTML = `
+            <strong>Thank you, ${clientName}!</strong><br>
+            Your growth brief for <strong>${clientBrand}</strong> has been received by the 24FPS PRODUCTION strategy team. We will review your project and get in touch within 24 hours. For urgent requirements, feel free to DM us directly on Instagram <a href="https://www.instagram.com/24fpsproduction.in" target="_blank" rel="noopener noreferrer" style="color: #4ade80; text-decoration: underline;">@24fpsproduction.in</a>.
+          `;
+        }
+
+        growthForm.reset();
+      }, 900);
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     7. BACK TO TOP BUTTON
+     -------------------------------------------------------------------------- */
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+});
