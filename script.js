@@ -1,6 +1,20 @@
 /**
- * 24FPS PRODUCTION — Netflix India Recreated Agency Website
+ * 24FPS PRODUCTION — Netflix-Inspired Premium Agency Website
  * Vanilla JavaScript (ES6+) — Zero Frameworks, Production Quality
+ *
+ * Features:
+ * 1. Header scroll effect
+ * 2. Mobile menu toggle
+ * 3. Hero video sound toggle
+ * 4. Hero quick form -> prefill contact
+ * 5. Portfolio videos & mic sound controls
+ * 6. Netflix FAQ accordion
+ * 7. Contact form validation
+ * 8. Netflix-style horizontal video carousel (arrows + touch swipe)
+ * 9. Client logo carousel (arrows + touch swipe)
+ * 10. Video modal/lightbox with video preview on card hover
+ * 11. Scroll-reveal IntersectionObserver
+ * 12. Card preview video hover play
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -54,11 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     3. HERO VIDEO SOUND TOGGLE (MIC ON / OFF)
+     3. HERO VIDEO SOUND & FULLSCREEN CONTROLS
      -------------------------------------------------------------------------- */
   const heroVideo = document.getElementById('heroVideo');
   const heroSoundToggle = document.getElementById('heroSoundToggle');
   const heroSoundLabel = document.getElementById('heroSoundLabel');
+  const heroFullscreenToggle = document.getElementById('heroFullscreenToggle');
 
   if (heroVideo && heroSoundToggle) {
     heroSoundToggle.addEventListener('click', () => {
@@ -71,6 +86,24 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideo.muted = true;
         heroSoundToggle.classList.remove('active');
         if (heroSoundLabel) heroSoundLabel.textContent = 'Unmute Reel';
+      }
+    });
+  }
+
+  if (heroVideo && heroFullscreenToggle) {
+    heroFullscreenToggle.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        if (heroVideo.requestFullscreen) {
+          heroVideo.requestFullscreen();
+        } else if (heroVideo.webkitRequestFullscreen) {
+          heroVideo.webkitRequestFullscreen();
+        } else if (heroVideo.msRequestFullscreen) {
+          heroVideo.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
       }
     });
   }
@@ -88,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const enteredEmail = heroEmailInput.value.trim();
       if (enteredEmail && contactEmailInput) {
         contactEmailInput.value = enteredEmail;
-        // Trigger floating label state
         contactEmailInput.dispatchEvent(new Event('input'));
       }
       const contactSection = document.getElementById('contact');
@@ -102,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     5. PORTFOLIO VIDEOS & MIC SOUND CONTROLS (HORIZONTAL 16:9)
+     5. PORTFOLIO VIDEOS & MIC SOUND CONTROLS (HORIZONTAL 16:9 GRID)
      -------------------------------------------------------------------------- */
   const portfolioVideos = document.querySelectorAll('.nf-portfolio-video');
   const playBtns = document.querySelectorAll('.nf-play-btn');
@@ -223,7 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
       questionBtn.addEventListener('click', () => {
         const isOpen = item.classList.contains('open');
 
-        // Close all other items (standard Netflix behavior)
         faqItems.forEach(otherItem => {
           if (otherItem !== item && otherItem.classList.contains('open')) {
             otherItem.classList.remove('open');
@@ -283,7 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    // Live validation error reset on input
     Object.keys(fields).forEach(key => {
       const field = fields[key];
       if (field.input) {
@@ -323,7 +353,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Prepare submission action
       if (submitBtn) submitBtn.classList.add('loading');
 
       setTimeout(() => {
@@ -332,8 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const clientName = fields.name.input.value.trim();
         const clientBrand = fields.brand.input.value.trim();
 
-        // Note Requirement: "Do not create fake success messages for forms that are not connected to a working submission endpoint."
-        // We clarify the brief status and directly provide the Instagram / contact routing:
         if (formNotice) {
           formNotice.className = 'nf-form-notice success';
           formNotice.innerHTML = `
@@ -343,6 +370,310 @@ document.addEventListener('DOMContentLoaded', () => {
 
         contactForm.reset();
       }, 700);
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     8. NETFLIX-STYLE HORIZONTAL VIDEO CAROUSEL
+     -------------------------------------------------------------------------- */
+  const videoCarousel = document.getElementById('videoCarousel');
+  const videoPrev = document.getElementById('videoPrev');
+  const videoNext = document.getElementById('videoNext');
+
+  if (videoCarousel) {
+    const getVideoScrollAmount = () => {
+      const card = videoCarousel.querySelector('.nf-video-card');
+      return card ? card.offsetWidth + 20 : 340;
+    };
+
+    if (videoPrev) {
+      videoPrev.addEventListener('click', () => {
+        videoCarousel.scrollBy({ left: -getVideoScrollAmount(), behavior: 'smooth' });
+      });
+    }
+    if (videoNext) {
+      videoNext.addEventListener('click', () => {
+        videoCarousel.scrollBy({ left: getVideoScrollAmount(), behavior: 'smooth' });
+      });
+    }
+
+    // Touch swipe for video carousel
+    setupTouchSwipe(videoCarousel);
+
+    // Arrow visibility based on scroll position
+    const updateVideoArrows = () => {
+      if (!videoPrev || !videoNext) return;
+      videoPrev.style.opacity = videoCarousel.scrollLeft <= 10 ? '0.4' : '1';
+      videoNext.style.opacity =
+        videoCarousel.scrollLeft + videoCarousel.clientWidth >= videoCarousel.scrollWidth - 10
+          ? '0.4' : '1';
+    };
+    videoCarousel.addEventListener('scroll', updateVideoArrows, { passive: true });
+    updateVideoArrows();
+
+    // Keyboard navigation on cards
+    videoCarousel.querySelectorAll('.nf-video-card').forEach(card => {
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          videoCarousel.scrollBy({ left: getVideoScrollAmount(), behavior: 'smooth' });
+        } else if (e.key === 'ArrowLeft') {
+          videoCarousel.scrollBy({ left: -getVideoScrollAmount(), behavior: 'smooth' });
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(card);
+        }
+      });
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     9. CLIENT LOGO CAROUSEL
+     -------------------------------------------------------------------------- */
+  const logoCarousel = document.getElementById('logoCarousel');
+  const logoPrev = document.getElementById('logoPrev');
+  const logoNext = document.getElementById('logoNext');
+
+  if (logoCarousel) {
+    const getLogoScrollAmount = () => {
+      const card = logoCarousel.querySelector('.nf-logo-card');
+      return card ? (card.offsetWidth + 20) * 2 : 460;
+    };
+
+    if (logoPrev) {
+      logoPrev.addEventListener('click', () => {
+        logoCarousel.scrollBy({ left: -getLogoScrollAmount(), behavior: 'smooth' });
+      });
+    }
+    if (logoNext) {
+      logoNext.addEventListener('click', () => {
+        logoCarousel.scrollBy({ left: getLogoScrollAmount(), behavior: 'smooth' });
+      });
+    }
+
+    // Touch swipe for logo carousel
+    setupTouchSwipe(logoCarousel);
+
+    // Arrow visibility
+    const updateLogoArrows = () => {
+      if (!logoPrev || !logoNext) return;
+      logoPrev.style.opacity = logoCarousel.scrollLeft <= 10 ? '0.4' : '1';
+      logoNext.style.opacity =
+        logoCarousel.scrollLeft + logoCarousel.clientWidth >= logoCarousel.scrollWidth - 10
+          ? '0.4' : '1';
+    };
+    logoCarousel.addEventListener('scroll', updateLogoArrows, { passive: true });
+    updateLogoArrows();
+  }
+
+  /* --------------------------------------------------------------------------
+     TOUCH SWIPE HELPER (shared for both carousels)
+     -------------------------------------------------------------------------- */
+  function setupTouchSwipe(track) {
+    let startX = 0;
+    let scrollStart = 0;
+    let isDragging = false;
+
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      scrollStart = track.scrollLeft;
+      isDragging = true;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const delta = startX - e.touches[0].clientX;
+      track.scrollLeft = scrollStart + delta;
+    }, { passive: true });
+
+    track.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    // Mouse drag support for desktop
+    track.addEventListener('mousedown', (e) => {
+      startX = e.clientX;
+      scrollStart = track.scrollLeft;
+      isDragging = true;
+      track.style.cursor = 'grabbing';
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        track.style.cursor = '';
+      }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const delta = startX - e.clientX;
+      track.scrollLeft = scrollStart + delta;
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     10. VIDEO MODAL LIGHTBOX
+     -------------------------------------------------------------------------- */
+  const videoModal = document.getElementById('videoModal');
+  const modalClose = document.getElementById('modalClose');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSubtitle = document.getElementById('modalSubtitle');
+  const modalTags = document.getElementById('modalTags');
+  const modalVideoWrap = document.getElementById('modalVideoWrap');
+
+  // Stop all preview videos playing in carousel
+  const stopAllPreviewVideos = () => {
+    document.querySelectorAll('.nf-card-preview-video').forEach(v => {
+      v.pause();
+    });
+  };
+
+  const openModal = (card) => {
+    if (!videoModal) return;
+
+    const videoSrc = card.dataset.videoSrc;
+    const instaSrc = card.dataset.instagramSrc;
+    const title = card.dataset.title || '';
+    const subtitle = card.dataset.subtitle || '';
+    const tags = card.dataset.tags || '';
+
+    // Populate header
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalSubtitle) modalSubtitle.textContent = subtitle;
+    if (modalTags) modalTags.textContent = tags;
+
+    // Populate video area
+    if (modalVideoWrap) {
+      modalVideoWrap.innerHTML = '';
+
+      if (videoSrc) {
+        const vid = document.createElement('video');
+        vid.src = videoSrc;
+        vid.controls = true;
+        vid.autoplay = true;
+        vid.playsInline = true;
+        vid.style.width = '100%';
+        vid.style.height = '100%';
+        vid.style.objectFit = 'contain';
+        vid.style.background = '#000';
+        modalVideoWrap.appendChild(vid);
+      } else if (instaSrc) {
+        const iframe = document.createElement('iframe');
+        iframe.src = instaSrc;
+        iframe.title = title;
+        iframe.allowFullscreen = true;
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        modalVideoWrap.appendChild(iframe);
+      }
+    }
+
+    // Show modal
+    videoModal.removeAttribute('hidden');
+    // Trigger open animation on next frame
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        videoModal.classList.add('nf-modal-open');
+      });
+    });
+    document.body.style.overflow = 'hidden';
+
+    // Stop any preview videos
+    stopAllPreviewVideos();
+    // Stop portfolio section videos
+    document.querySelectorAll('.nf-portfolio-video').forEach(v => v.pause());
+  };
+
+  const closeModal = () => {
+    if (!videoModal) return;
+    videoModal.classList.remove('nf-modal-open');
+
+    // Wait for transition then hide
+    setTimeout(() => {
+      videoModal.setAttribute('hidden', '');
+      if (modalVideoWrap) modalVideoWrap.innerHTML = '';
+      document.body.style.overflow = '';
+    }, 320);
+  };
+
+  // Attach open to video cards
+  document.querySelectorAll('.nf-video-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't open if user was dragging
+      openModal(card);
+    });
+
+    // Play preview on hover
+    const previewVideo = card.querySelector('.nf-card-preview-video');
+    if (previewVideo) {
+      card.addEventListener('mouseenter', () => {
+        previewVideo.play().catch(() => {});
+      });
+      card.addEventListener('mouseleave', () => {
+        previewVideo.pause();
+        previewVideo.currentTime = 0;
+      });
+    }
+  });
+
+  if (modalClose) {
+    modalClose.addEventListener('click', closeModal);
+  }
+
+  if (videoModal) {
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) closeModal();
+    });
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal && !videoModal.hasAttribute('hidden')) {
+      closeModal();
+    }
+  });
+
+  /* --------------------------------------------------------------------------
+     11. SCROLL-REVEAL (IntersectionObserver)
+     -------------------------------------------------------------------------- */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-hero');
+
+    // Apply staggered delay from data-delay attribute
+    revealElements.forEach(el => {
+      const delay = el.dataset.delay;
+      if (delay) {
+        el.style.transitionDelay = delay + 's';
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); // fire once
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    // Hero content: trigger immediately on load
+    const heroContent = document.querySelector('.reveal-hero');
+    if (heroContent) {
+      setTimeout(() => heroContent.classList.add('is-visible'), 300);
+    }
+  } else {
+    // If reduced motion or no IntersectionObserver: show everything
+    document.querySelectorAll('.reveal-up, .reveal-hero').forEach(el => {
+      el.classList.add('is-visible');
     });
   }
 
