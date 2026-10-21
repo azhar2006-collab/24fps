@@ -1580,22 +1580,21 @@ button {
 }
 
 /* ==========================================================================
-   13. CLIENT LOGOS — DUAL-ROW INFINITE SCROLLING MARQUEE
+   13. CLIENT LOGOS — SINGLE-ROW FLOATING INFINITE MARQUEE
    ========================================================================== */
 .nf-logos-section {
   background: linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+  position: relative;
 }
 
 .nf-client-marquee-wrapper {
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 1.5rem 0 2.5rem 0;
+  padding: 2.2rem 0 3rem 0;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 .nf-marquee-row {
@@ -1608,19 +1607,14 @@ button {
 .nf-marquee-track {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 3.5rem;
   width: max-content;
   will-change: transform;
 }
 
-/* Row 1 scrolls smoothly left */
+/* Single continuous smooth left scroll */
 .nf-marquee-track-left {
-  animation: nfMarqueeScrollLeft 32s linear infinite;
-}
-
-/* Row 2 scrolls smoothly right */
-.nf-marquee-track-right {
-  animation: nfMarqueeScrollRight 34s linear infinite;
+  animation: nfMarqueeScrollLeft 38s linear infinite;
 }
 
 /* Pause on hover so visitors can comfortably view and inspect logos */
@@ -1637,61 +1631,72 @@ button {
   }
 }
 
-@keyframes nfMarqueeScrollRight {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-/* Client Badge: Rounded card with dashed border matching reference */
+/* Floating Client Logo Item (No white background, no red border) */
 .nf-client-badge {
-  flex: 0 0 210px;
-  width: 210px;
-  height: 105px;
-  background: #ffffff;
-  border: 2px dashed #E50914;
-  border-radius: 16px;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 20px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, border 0.3s;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
-  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  animation: nfLogoFloat 4.2s ease-in-out infinite;
 }
 
-@media (min-width: 768px) {
-  .nf-client-badge {
-    flex: 0 0 230px;
-    width: 230px;
-    height: 115px;
-    padding: 14px 24px;
+.nf-client-badge:nth-child(2n) {
+  animation-delay: -1.4s;
+  animation-duration: 4.8s;
+}
+
+.nf-client-badge:nth-child(3n) {
+  animation-delay: -2.8s;
+  animation-duration: 4.4s;
+}
+
+@keyframes nfLogoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
   }
 }
 
 .nf-client-badge:hover {
-  transform: translateY(-5px) scale(1.05);
-  border: 2px solid #E50914;
-  box-shadow: 0 12px 30px rgba(229, 9, 20, 0.4);
+  transform: translateY(-12px) scale(1.1);
+  border: none !important;
+  box-shadow: none !important;
 }
 
+/* Logo Image: Clean, floating aesthetic with subtle depth */
 .nf-client-badge-img {
-  max-width: 100%;
-  max-height: 80px;
+  height: 80px;
   width: auto;
-  height: auto;
+  max-width: 190px;
   object-fit: contain;
   object-position: center;
-  filter: contrast(1.02);
-  transition: transform 0.3s ease;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.65));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Circular brand logos */
+.nf-client-badge-img.is-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.7);
 }
 
 .nf-client-badge:hover .nf-client-badge-img {
-  transform: scale(1.06);
+  filter: drop-shadow(0 12px 28px rgba(229, 9, 20, 0.35)) brightness(1.08);
+  transform: scale(1.05);
 }
 
 /* ==========================================================================
@@ -1866,11 +1871,19 @@ body {
   }
 
   .nf-client-badge {
-    flex: 0 0 170px;
-    width: 170px;
-    height: 85px;
-    padding: 10px 14px;
-    border-radius: 12px;
+    padding: 0.25rem 0.5rem;
+    animation: none;
+  }
+  .nf-client-badge-img {
+    height: 56px;
+    max-width: 130px;
+  }
+  .nf-client-badge-img.is-circle {
+    width: 56px;
+    height: 56px;
+  }
+  .nf-marquee-track {
+    gap: 2rem;
   }
 }
 
