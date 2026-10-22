@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -500,12 +500,10 @@
 
             <!-- 1: 77 Fitness â€” Brand Anthem (video) -->
             <div class="nf-rc" tabindex="0">
-              <video class="nf-rc-cover" loop muted playsinline preload="none" data-rc-video
-                     style="opacity:0; transition:opacity .4s"
-                     poster="">
+              <video class="nf-rc-cover" autoplay loop muted playsinline data-rc-video>
                 <source src="reel1.mp4" type="video/mp4">
               </video>
-              <div class="nf-rc-art" style="background:radial-gradient(120% 140% at 15% 10%,hsl(8,80%,52%),transparent 60%),radial-gradient(100% 120% at 90% 90%,hsl(330,75%,40%),#050505)">
+              <div class="nf-rc-art" style="background:linear-gradient(0deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.0) 100%)">
                 <span>77 Fitness Studio<br>Brand Anthem</span>
               </div>
               <div class="nf-rc-badge"><span class="nf-rc-badge-dot"></span> FEATURED REEL</div>
@@ -524,11 +522,10 @@
 
             <!-- 2: Aroos Makeover â€” Editorial Reel (video) -->
             <div class="nf-rc" tabindex="0">
-              <video class="nf-rc-cover" loop muted playsinline preload="none" data-rc-video
-                     style="opacity:0; transition:opacity .4s">
+              <video class="nf-rc-cover" autoplay loop muted playsinline data-rc-video>
                 <source src="reel3.mp4" type="video/mp4">
               </video>
-              <div class="nf-rc-art" style="background:radial-gradient(120% 140% at 15% 10%,hsl(320,80%,52%),transparent 60%),radial-gradient(100% 120% at 90% 90%,hsl(20,75%,40%),#050505)">
+              <div class="nf-rc-art" style="background:linear-gradient(0deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.0) 100%)">
                 <span>Aroos Makeover<br>Editorial Reel</span>
               </div>
               <div class="nf-rc-badge gold"><span class="nf-rc-badge-dot"></span> LUXURY SHOWCASE</div>
@@ -545,11 +542,10 @@
 
             <!-- 3: Creative Lab â€” Dynamic Ads (video) -->
             <div class="nf-rc" tabindex="0">
-              <video class="nf-rc-cover" loop muted playsinline preload="none" data-rc-video
-                     style="opacity:0; transition:opacity .4s">
+              <video class="nf-rc-cover" autoplay loop muted playsinline data-rc-video>
                 <source src="reel4.mp4" type="video/mp4">
               </video>
-              <div class="nf-rc-art" style="background:radial-gradient(120% 140% at 15% 10%,hsl(190,80%,52%),transparent 60%),radial-gradient(100% 120% at 90% 90%,hsl(265,75%,40%),#050505)">
+              <div class="nf-rc-art" style="background:linear-gradient(0deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.0) 100%)">
                 <span>Creative Lab<br>Dynamic Ads</span>
               </div>
               <div class="nf-rc-badge"><span class="nf-rc-badge-dot"></span> AD ENGINE</div>
@@ -854,20 +850,16 @@
           });
         });
 
-        // Play video on hover, pause on leave â€” for campaign cards
+
+        // Videos autoplay — hover just ensures play continues & wires up controls
         document.querySelectorAll('.nf-rc[tabindex]').forEach(function(card) {
           var vid = card.querySelector('[data-rc-video]');
           if (!vid) return;
+          // Ensure autoplay resumes if browser paused it
           card.addEventListener('mouseenter', function() {
-            if (vid.readyState === 0) { vid.load(); }
-            vid.play().catch(function(){});
-            vid.style.opacity = '1';
+            if (vid.paused) { vid.play().catch(function(){}); }
           });
-          card.addEventListener('mouseleave', function() {
-            vid.pause();
-            vid.style.opacity = '0';
-          });
-          // Play/Mute controls inside card
+          // Play/Mute button controls
           var playBtn = card.querySelector('[data-rv-play]');
           var muteBtn = card.querySelector('[data-rv-mute]');
           if (playBtn) {
@@ -883,7 +875,11 @@
             });
           }
         });
-      })();
+
+
+
+
+
       </script>
     </div>
 
