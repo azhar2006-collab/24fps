@@ -276,26 +276,35 @@
 
     <div class="nf-divider"></div>
 
-    <!-- CAMPAIGNS GRID (original portfolio, preserved) -->
-    <section class="nf-section" id="portfolio">
+    <!-- CINEMATIC REEL WALL — BENTO SHOWCASE -->
+    <section class="nf-section nf-reel-wall-section" id="portfolio">
       <div class="nf-container">
-        <div class="nf-section-header reveal-up">
-          <div class="nf-section-eyebrow">Portfolio</div>
-          <h2 class="nf-section-title">Campaigns That Make an Impact.</h2>
-          <p class="nf-section-subtitle">
-            Explore cinematic video campaigns created for leading fitness and lifestyle brands. Click play and toggle mic sound on or off.
+        <div class="nf-section-header text-center reveal-up">
+          <div class="nf-section-eyebrow">The Reel Wall</div>
+          <h2 class="nf-section-title">Campaigns That Break Through.</h2>
+          <p class="nf-section-subtitle" style="margin:0 auto;">
+            Cinematic video reels, brand shoots, and social launches — crafted for impact. Hit play. Turn on mic. Experience our work.
           </p>
         </div>
 
-        <div class="nf-portfolio-grid">
+        <!-- BENTO GRID: Asymmetric Cinematic Layout -->
+        <div class="rw-bento-grid reveal-up" data-delay="0.1">
 
-          <!-- PROJECT 01: 77 Fitness Studio -->
-          <article class="nf-portfolio-card reveal-up" data-delay="0">
-            <div class="nf-video-wrapper horizontal-frame">
-              <video class="nf-portfolio-video" id="video1" loop playsinline preload="metadata">
+          <!-- ROW 1: Hero Video (large) + 2 stacked shots -->
+          <!-- CELL A1: HERO — 77 Fitness Brand Anthem (spans 2 cols, tall) -->
+          <article class="rw-cell rw-cell-hero rw-cell-video" data-delay="0">
+            <div class="rw-media-wrap">
+              <video class="nf-portfolio-video rw-video" id="video1" loop playsinline preload="metadata">
                 <source src="reel1.mp4" type="video/mp4">
               </video>
-              <div class="nf-video-badge">TOP 1 &bull; COMMERCIAL REEL</div>
+              <div class="rw-overlay"></div>
+              <div class="rw-badge">
+                <span class="rw-badge-dot"></span> FEATURED REEL
+              </div>
+              <div class="rw-card-meta">
+                <span class="rw-meta-tag">Fitness &amp; Gyms</span>
+                <h3 class="rw-meta-title">77 Fitness Studio — Brand Anthem</h3>
+              </div>
               <div class="nf-video-controls">
                 <button class="nf-ctrl-btn nf-play-btn" data-target="video1" aria-label="Play or pause video">
                   <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg>
@@ -308,23 +317,51 @@
                 </button>
               </div>
             </div>
-            <div class="nf-card-info">
-              <div class="nf-card-tags">
-                <span class="nf-tag-red">Fitness &amp; Gyms</span>
-                <span class="nf-tag-gray">Brand Commercial</span>
+          </article>
+
+          <!-- CELL A2: 77 Fitness Brand Shot (top-right stacked) -->
+          <article class="rw-cell rw-cell-shot rw-cell-a2">
+            <div class="rw-media-wrap">
+              <img src="WhatsApp Image 2026-10-20 at 11.51.33 PM.jpeg" alt="77 Fitness Studio — Brand Identity" class="rw-shot-img" loading="lazy">
+              <div class="rw-overlay"></div>
+              <div class="rw-shot-label">
+                <span class="rw-shot-icon">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </span>
+                77 Fitness Studio
               </div>
-              <h3 class="nf-card-title">77 Fitness Studio — Brand Anthem &amp; Acquisition Campaign</h3>
-              <p class="nf-card-desc">High-octane horizontal commercial highlighting elite training, gym culture, and member transformation with pulse-raising sound design.</p>
             </div>
           </article>
 
-          <!-- PROJECT 02: Aroos Makeover -->
-          <article class="nf-portfolio-card reveal-up" data-delay="0.1">
-            <div class="nf-video-wrapper horizontal-frame">
-              <video class="nf-portfolio-video" id="video2" loop playsinline preload="metadata">
+          <!-- CELL A3: Aroos Makeover Brand Shot (bottom-right stacked) -->
+          <article class="rw-cell rw-cell-shot rw-cell-a3">
+            <div class="rw-media-wrap">
+              <img src="WhatsApp Image 2026-10-20 at 11.51.32 PM.jpeg" alt="Aroos Makeover — Luxury Bridal Identity" class="rw-shot-img" loading="lazy">
+              <div class="rw-overlay"></div>
+              <div class="rw-shot-label">
+                <span class="rw-shot-icon">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </span>
+                Aroos Makeover
+              </div>
+            </div>
+          </article>
+
+          <!-- ROW 2: 3 equal cells -->
+          <!-- CELL B1: Aroos Makeover Reel -->
+          <article class="rw-cell rw-cell-video rw-cell-b1">
+            <div class="rw-media-wrap">
+              <video class="nf-portfolio-video rw-video" id="video2" loop playsinline preload="metadata">
                 <source src="reel3.mp4" type="video/mp4">
               </video>
-              <div class="nf-video-badge">TOP 2 &bull; LUXURY SHOWCASE</div>
+              <div class="rw-overlay"></div>
+              <div class="rw-badge rw-badge-gold">
+                <span class="rw-badge-dot rw-dot-gold"></span> LUXURY SHOWCASE
+              </div>
+              <div class="rw-card-meta">
+                <span class="rw-meta-tag">Beauty &amp; Bridal</span>
+                <h3 class="rw-meta-title">Aroos Makeover — Editorial Reel</h3>
+              </div>
               <div class="nf-video-controls">
                 <button class="nf-ctrl-btn nf-play-btn" data-target="video2" aria-label="Play or pause video">
                   <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg>
@@ -337,23 +374,36 @@
                 </button>
               </div>
             </div>
-            <div class="nf-card-info">
-              <div class="nf-card-tags">
-                <span class="nf-tag-red">Beauty &amp; Personal Care</span>
-                <span class="nf-tag-gray">Bridal &amp; Editorial</span>
+          </article>
+
+          <!-- CELL B2: GNC Brand Shot -->
+          <article class="rw-cell rw-cell-shot rw-cell-b2">
+            <div class="rw-media-wrap">
+              <img src="WhatsApp Image 2026-10-20 at 11.51.33 PM (1).jpeg" alt="GNC India — Supplements Brand" class="rw-shot-img" loading="lazy">
+              <div class="rw-overlay"></div>
+              <div class="rw-shot-label">
+                <span class="rw-shot-icon">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </span>
+                GNC India
               </div>
-              <h3 class="nf-card-title">Aroos Makeover — Luxury Bridal &amp; Editorial Brand Identity</h3>
-              <p class="nf-card-desc">Ultra-premium aesthetic identity highlighting intricate craftsmanship, soft-glow lighting, and opulent visual direction.</p>
             </div>
           </article>
 
-          <!-- PROJECT 03: Creative Lab -->
-          <article class="nf-portfolio-card reveal-up" data-delay="0.2">
-            <div class="nf-video-wrapper horizontal-frame">
-              <video class="nf-portfolio-video" id="video3" loop playsinline preload="metadata">
+          <!-- CELL B3: Creative Lab Reel -->
+          <article class="rw-cell rw-cell-video rw-cell-b3">
+            <div class="rw-media-wrap">
+              <video class="nf-portfolio-video rw-video" id="video3" loop playsinline preload="metadata">
                 <source src="reel4.mp4" type="video/mp4">
               </video>
-              <div class="nf-video-badge">TOP 3 &bull; AD ENGINE</div>
+              <div class="rw-overlay"></div>
+              <div class="rw-badge">
+                <span class="rw-badge-dot"></span> AD ENGINE
+              </div>
+              <div class="rw-card-meta">
+                <span class="rw-meta-tag">Activewear</span>
+                <h3 class="rw-meta-title">Creative Lab — Dynamic Ads</h3>
+              </div>
               <div class="nf-video-controls">
                 <button class="nf-ctrl-btn nf-play-btn" data-target="video3" aria-label="Play or pause video">
                   <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg>
@@ -366,34 +416,56 @@
                 </button>
               </div>
             </div>
-            <div class="nf-card-info">
-              <div class="nf-card-tags">
-                <span class="nf-tag-red">Lifestyle &amp; Activewear</span>
-                <span class="nf-tag-gray">High-Impact Creatives</span>
+          </article>
+
+          <!-- ROW 3: 2 stacked shots + Instagram embed (large) -->
+          <!-- CELL C1: High On Fitness Shot -->
+          <article class="rw-cell rw-cell-shot rw-cell-c1">
+            <div class="rw-media-wrap">
+              <img src="WhatsApp Image 2026-10-20 at 11.51.32 PM (1).jpeg" alt="High On Fitness Studio — Social Identity" class="rw-shot-img" loading="lazy">
+              <div class="rw-overlay"></div>
+              <div class="rw-shot-label">
+                <span class="rw-shot-icon">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </span>
+                High On Fitness
               </div>
-              <h3 class="nf-card-title">Commercial Creative Lab — Multi-Format Dynamic Ad Engine</h3>
-              <p class="nf-card-desc">High-frequency short-form video production built specifically for paid social acquisition and fast hook testing.</p>
             </div>
           </article>
 
-          <!-- PROJECT 04: Instagram Launch -->
-          <article class="nf-portfolio-card reveal-up" data-delay="0.3">
-            <div class="nf-video-wrapper horizontal-frame instagram-frame">
+          <!-- CELL C2: JP Holidays Shot -->
+          <article class="rw-cell rw-cell-shot rw-cell-c2">
+            <div class="rw-media-wrap">
+              <img src="WhatsApp Image 2026-10-20 at 11.51.31 PM.jpeg" alt="JP Holidays — Travel Brand Identity" class="rw-shot-img" loading="lazy">
+              <div class="rw-overlay"></div>
+              <div class="rw-shot-label">
+                <span class="rw-shot-icon">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </span>
+                JP Holidays
+              </div>
+            </div>
+          </article>
+
+          <!-- CELL C3: Instagram Embed (spans 2 cols) -->
+          <article class="rw-cell rw-cell-ig rw-cell-c3">
+            <div class="rw-media-wrap rw-ig-wrap">
               <iframe 
                 src="https://www.instagram.com/p/DUqHSRREdTU/embed/" 
-                class="nf-iframe"
+                class="rw-ig-iframe"
                 title="77 Fitness Studio Vadapalani Launch Reel"
                 loading="lazy">
               </iframe>
-              <div class="nf-video-badge">TOP 4 &bull; OFFICIAL LAUNCH</div>
+              <div class="rw-ig-glow"></div>
             </div>
-            <div class="nf-card-info">
-              <div class="nf-card-tags">
-                <span class="nf-tag-red">Health &amp; Wellness</span>
-                <span class="nf-tag-gray">Grand Opening</span>
+            <div class="rw-ig-meta">
+              <div class="rw-ig-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
               </div>
-              <h3 class="nf-card-title">77 Fitness Vadapalani — Grand Opening Digital Launch Blitz</h3>
-              <p class="nf-card-desc">Comprehensive digital pre-launch strategy orchestrating social buzz, influencer previews, and local targeted conversion.</p>
+              <div>
+                <span class="rw-ig-label">77 Fitness Vadapalani</span>
+                <span class="rw-ig-sub">Grand Opening Launch Blitz</span>
+              </div>
             </div>
           </article>
 
