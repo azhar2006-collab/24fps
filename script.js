@@ -677,4 +677,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* --------------------------------------------------------------------------
+     12. SERVICES BENTO INTERACTIVE FILTER TABS
+     -------------------------------------------------------------------------- */
+  const filterPills = document.querySelectorAll('.nf-filter-pill');
+  const bentoCards = document.querySelectorAll('.nf-bento-card');
+
+  if (filterPills.length > 0 && bentoCards.length > 0) {
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const filter = pill.getAttribute('data-filter');
+
+        // Update active tab state
+        filterPills.forEach(p => {
+          p.classList.remove('is-active');
+          p.setAttribute('aria-selected', 'false');
+        });
+        pill.classList.add('is-active');
+        pill.setAttribute('aria-selected', 'true');
+
+        // Smoothly filter cards
+        bentoCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('is-dimmed');
+          } else {
+            card.classList.add('is-dimmed');
+          }
+        });
+      });
+    });
+  }
+
 });
