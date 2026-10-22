@@ -678,33 +678,110 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     12. SERVICES BENTO INTERACTIVE FILTER TABS
+     12. SERVICES COMPACT INTERACTIVE CAROUSEL & FILTER
      -------------------------------------------------------------------------- */
-  const filterPills = document.querySelectorAll('.nf-filter-pill');
-  const bentoCards = document.querySelectorAll('.nf-bento-card');
+  const servicesCarousel = document.getElementById('servicesCarousel');
+  const servicesPrev = document.getElementById('servicesPrev');
+  const servicesNext = document.getElementById('servicesNext');
+  const servicesDots = document.getElementById('servicesDots');
+  const servicePills = document.querySelectorAll('.nf-filter-pill');
 
-  if (filterPills.length > 0 && bentoCards.length > 0) {
-    filterPills.forEach(pill => {
+  if (servicesCarousel) {
+    const getServiceScrollAmount = () => {
+      const slide = servicesCarousel.querySelector('.nf-service-slide:not(.is-hidden)');
+      return slide ? slide.offsetWidth + 20 : 340;
+    };
+
+    if (servicesPrev) {
+      servicesPrev.addEventListener('click', () => {
+        servicesCarousel.scrollBy({ left: -getServiceScrollAmount(), behavior: 'smooth' });
+      });
+    }
+
+    if (servicesNext) {
+      servicesNext.addEventListener('click', () => {
+        servicesCarousel.scrollBy({ left: getServiceScrollAmount(), behavior: 'smooth' });
+      });
+    }
+
+    // Connect touch swipe & mouse drag helper
+    setupTouchSwipe(servicesCarousel);
+
+    // Update dots and arrows on scroll
+    const updateServicesUI = () => {
+      const visibleSlides = servicesCarousel.querySelectorAll('.nf-service-slide:not(.is-hidden)');
+      if (servicesPrev) {
+        servicesPrev.style.opacity = servicesCarousel.scrollLeft <= 10 ? '0.35' : '1';
+        servicesPrev.style.pointerEvents = servicesCarousel.scrollLeft <= 10 ? 'none' : 'auto';
+      }
+      if (servicesNext) {
+        const atEnd = servicesCarousel.scrollLeft + servicesCarousel.clientWidth >= servicesCarousel.scrollWidth - 15;
+        servicesNext.style.opacity = atEnd ? '0.35' : '1';
+        servicesNext.style.pointerEvents = atEnd ? 'none' : 'auto';
+      }
+
+      // Update active dot index
+      if (servicesDots && visibleSlides.length > 0) {
+        const scrollIndex = Math.round(servicesCarousel.scrollLeft / getServiceScrollAmount());
+        const dots = servicesDots.querySelectorAll('.nf-services-dot');
+        dots.forEach((dot, idx) => {
+          if (idx === Math.min(scrollIndex, dots.length - 1)) {
+            dot.classList.add('is-active');
+          } else {
+            dot.classList.remove('is-active');
+          }
+        });
+      }
+    };
+
+    // Build pagination dots dynamically based on visible slides
+    const buildDots = () => {
+      if (!servicesDots) return;
+      servicesDots.innerHTML = '';
+      const visibleSlides = servicesCarousel.querySelectorAll('.nf-service-slide:not(.is-hidden)');
+      visibleSlides.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = 'nf-services-dot' + (idx === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
+        dot.addEventListener('click', () => {
+          servicesCarousel.scrollTo({ left: idx * getServiceScrollAmount(), behavior: 'smooth' });
+        });
+        servicesDots.appendChild(dot);
+      });
+    };
+
+    buildDots();
+    updateServicesUI();
+    servicesCarousel.addEventListener('scroll', updateServicesUI, { passive: true });
+
+    // Category Filter Buttons
+    servicePills.forEach(pill => {
       pill.addEventListener('click', () => {
         const filter = pill.getAttribute('data-filter');
 
-        // Update active tab state
-        filterPills.forEach(p => {
+        servicePills.forEach(p => {
           p.classList.remove('is-active');
           p.setAttribute('aria-selected', 'false');
         });
         pill.classList.add('is-active');
         pill.setAttribute('aria-selected', 'true');
 
-        // Smoothly filter cards
-        bentoCards.forEach(card => {
-          const category = card.getAttribute('data-category');
+        const slides = servicesCarousel.querySelectorAll('.nf-service-slide');
+        slides.forEach(slide => {
+          const category = slide.getAttribute('data-category');
           if (filter === 'all' || category === filter) {
-            card.classList.remove('is-dimmed');
+            slide.classList.remove('is-hidden');
           } else {
-            card.classList.add('is-dimmed');
+            slide.classList.add('is-hidden');
           }
         });
+
+        // Reset scroll position and rebuild dots for filtered set
+        servicesCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          buildDots();
+          updateServicesUI();
+        }, 120);
       });
     });
   }
