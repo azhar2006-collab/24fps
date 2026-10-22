@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>24FPS PRODUCTION – Lifestyle &amp; Fitness Digital Marketing Agency</title><meta name="description" content="We build brands that move people. Cinematic video, performance marketing and digital products for lifestyle and fitness brands.">
+<style>
+:root{--bg:#141414;--ink:#fff;--mute:#b3b3b3;--red:#e50914;--card:#181818;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;overflow-x:hidden}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:2px solid #fff;outline-offset:2px}
+header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;display:flex;align-items:center;gap:28px;padding:18px 4%;background:linear-gradient(#000c,transparent);transition:background .3s}
+header.solid{background:var(--bg)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:19;background:#000}
+.logo{font-weight:800;letter-spacing:-.06em;font-size:30px;line-height:1;display:flex;align-items:flex-end;color:#fff;text-decoration:none}
+.pr{font-size:10px;letter-spacing:.3em;font-weight:600;margin:0 0 3px 8px}@media(max-width:720px){.pr{display:none}}
+.logo small{font-size:.5em;letter-spacing:-.03em;margin-left:1px;margin-bottom:.04em}
+nav{display:flex;gap:20px;font-size:14px}
+nav a{color:#e5e5e5;text-decoration:none;transition:color .2s}
+nav a:hover,nav a.on{color:#fff;font-weight:600}
+.right{margin-left:auto;display:flex;align-items:center;gap:18px}
+.search{display:flex;align-items:center;border:1px solid transparent;padding:4px 8px}
+.search.open{border-color:#fff;background:#000a}
+.search input{width:0;background:none;border:0;color:#fff;outline:0;font-size:14px;transition:width .3s}
+.search.open input{width:190px;margin-left:8px}
+.av{width:32px;height:32px;border-radius:4px;background:var(--red);display:grid;place-items:center;font-weight:700;font-size:13px}
+.hero{position:relative;height:100vh;min-height:560px;display:flex;align-items:center;overflow:hidden}
+.hero canvas,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#000b 0,#0000 60%),linear-gradient(0deg,var(--bg) 0,#0000 30%)}
+.hero .in{position:relative;z-index:2;padding:0 4%;max-width:640px;margin-top:6vh}
+.tag{display:flex;align-items:center;gap:10px;font-weight:700;color:#ddd;margin-bottom:14px;font-size:15px}
+.tag b{color:var(--red);font-size:22px}
+h1{font-size:clamp(46px,8vw,96px);line-height:.92;letter-spacing:-.05em;font-weight:800;text-shadow:0 4px 30px #0008}
+.hero p{margin:20px 0 26px;font-size:clamp(16px,1.6vw,21px);line-height:1.4;text-shadow:0 2px 8px #000a;max-width:34em}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:11px 26px;border-radius:4px;font-weight:700;font-size:18px;transition:background .2s}
+.play{background:#fff;color:#000}.play:hover{background:#ffffffbf}
+.info{background:#6d6d6eb3}.info:hover{background:#6d6d6e66}
+.rating{position:absolute;z-index:2;right:0;bottom:24%;background:#33333399;border-left:3px solid #dcdcdc;padding:8px 40px 8px 14px;font-size:16px}
+main{position:relative;z-index:3;margin-top:-9vh;padding-bottom:60px}
+.row{margin:0 0 3vw}
+.row h2{font-size:clamp(17px,1.7vw,22px);font-weight:700;padding:0 4%;margin-bottom:10px;color:#e5e5e5}
+.wrap{position:relative}
+.track{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:34px 4%;margin:-34px 0;scroll-padding:0 4%}
+.track::-webkit-scrollbar{display:none}
+.arr{position:absolute;top:0;bottom:0;width:4%;z-index:5;background:#000a;font-size:34px;opacity:0;transition:opacity .2s}
+.wrap:hover .arr{opacity:1}.arr.l{left:0}.arr.r{right:0}
+.card{position:relative;flex:0 0 clamp(190px,21vw,310px);aspect-ratio:16/9;border-radius:4px;scroll-snap-align:start;cursor:pointer;transition:transform .3s .15s,box-shadow .3s .15s;overflow:hidden;background:#222;text-align:left}
+.card:hover,.card:focus-visible{transform:scale(1.32);z-index:6;box-shadow:0 14px 40px #000c;border-radius:6px}
+.card:first-child:hover{transform-origin:left center}.card:last-child:hover{transform-origin:right center}
+.art{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;font-weight:800;letter-spacing:-.04em;line-height:.95;font-size:clamp(18px,2vw,28px);text-shadow:0 2px 12px #0009}
+.art::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#000a,transparent 55%)}
+.art span{position:relative}
+.meta{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:var(--card);font-size:11px;transform:translateY(100%);transition:transform .25s .15s}
+.card:hover .meta,.card:focus-visible .meta{transform:none}
+.meta div{display:flex;gap:8px;align-items:center;margin-bottom:5px}
+.dot{width:24px;height:24px;border-radius:50%;border:1.5px solid #888;display:grid;place-items:center;font-size:10px}
+.dot.f{background:#fff;color:#000;border-color:#fff}
+.meta em{font-style:normal;color:#46d369;font-weight:700}
+.meta p{color:var(--mute)}
+.top .card{flex-basis:clamp(240px,26vw,360px);background:none;overflow:visible;display:flex;aspect-ratio:auto;height:clamp(150px,16vw,210px)}
+.top .card:hover{transform:scale(1.12)}
+.top .n{flex:0 0 46%;font-size:clamp(120px,15vw,200px);font-weight:800;letter-spacing:-.12em;line-height:.8;color:#141414;-webkit-text-stroke:3px #595959;display:flex;align-items:flex-end;justify-content:flex-end;padding-right:2px}
+.top .pst{flex:1;border-radius:4px;position:relative;overflow:hidden}
+.top .pst .art{font-size:18px}
+.top .meta{display:none}
+.about{padding:6vw 4%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;max-width:1200px}
+.about h3{font-size:44px;letter-spacing:-.05em}.about p{color:var(--mute);line-height:1.5;margin-top:6px}
+footer{padding:40px 4% 60px;color:#808080;font-size:13px;display:grid;gap:14px;max-width:1000px}
+footer .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+footer a{color:#808080;text-decoration:none}footer a:hover{text-decoration:underline}
+.modal{position:fixed;inset:0;z-index:50;background:#000b;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:4vh 16px}
+.modal.on{display:flex}
+.sheet{background:var(--card);width:min(880px,100%);border-radius:8px;overflow:hidden;box-shadow:0 20px 80px #000;animation:pop .3s}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+.screen{position:relative;aspect-ratio:16/9;background:#000}
+.screen canvas,.screen video{width:100%;height:100%;object-fit:cover;display:block}
+.screen::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--card),transparent 40%);pointer-events:none}
+.tc{position:absolute;left:24px;bottom:22px;z-index:2;font-variant-numeric:tabular-nums;font-size:14px;color:#ddd}
+.x{position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;background:#181818;font-size:20px}
+.sb{padding:6px 32px 36px;display:grid;grid-template-columns:2fr 1fr;gap:26px}
+.sb h3{font-size:34px;letter-spacing:-.04em;margin-bottom:10px}
+.sb p{line-height:1.5;margin-top:12px}.sb .g{color:#46d369;font-weight:700}
+.sb dl{font-size:14px;color:var(--mute);line-height:1.7}.sb dt{display:inline}.sb dd{display:inline;color:#fff}.sb dd::after{content:"";display:block}
+@media(max-width:720px){nav{display:none}.sb{grid-template-columns:1fr;padding:6px 20px 28px}header{gap:12px}.arr{display:none}.card:hover{transform:none}.meta{display:none}.rating{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.sec{padding:6vw 4%;max-width:1200px}.big{font-size:clamp(30px,4.5vw,58px);letter-spacing:-.05em;line-height:1;margin-bottom:18px}
+.lead{color:var(--mute);line-height:1.5;max-width:40em;margin-bottom:20px}
+.cols{display:grid;grid-template-columns:3fr 2fr;gap:40px}@media(max-width:820px){.cols{grid-template-columns:1fr}}
+.pts{list-style:none;display:grid;gap:14px;line-height:1.45;color:var(--mute)}.pts b{color:#fff}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start}.stats div{background:var(--card);padding:24px;border-radius:6px}.stats h3{font-size:34px;letter-spacing:-.04em}.stats p{color:var(--mute);margin-top:4px}
+.faq{display:grid;gap:2px;max-width:820px}details{background:#2d2d2d}summary{padding:20px 24px;font-size:19px;cursor:pointer}details[open] summary{border-bottom:1px solid #141414}details p{padding:20px 24px;line-height:1.5;color:#ddd}
+.bf{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:820px}.bf label{display:grid;gap:6px;font-size:14px;color:var(--mute)}.bf .w,.bf p,.bf .btn{grid-column:1/-1}.bf .btn{justify-self:start}
+.bf input,.bf select,.bf textarea{background:#333;border:1px solid #555;border-radius:4px;color:#fff;font:inherit;padding:12px}@media(max-width:720px){.bf{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header id="hd">
+  <a class="logo" href="#" aria-label="24fps home">24<small>fps</small><span class="pr">PRODUCTION</span></a>
+  <nav>
+    <a class="on" href="#home">Home</a><a href="#r-clients">Clients</a><a href="#r-reels">Campaigns</a><a href="#r-svc">Services</a><a href="#why">Why us</a><a href="#faq">FAQ</a>
+  </nav>
+  <div class="right">
+    <div class="search" id="sr"><button id="sb" aria-label="Search projects"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><circle cx="10" cy="10" r="7"/><path d="m16 16 6 6"/></svg></button><input id="q" placeholder="Titles, clients, genres" aria-label="Search"></div>
+    <a class="btn" href="#contact" style="background:var(--red);padding:7px 16px;font-size:14px;text-decoration:none;color:#fff">Get started</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <canvas id="hc"></canvas>
+  <!-- To use real footage: set HERO_VIDEO in the script below to an .mp4 URL -->
+  <div class="in">
+    <div class="tag">Premium digital agency</div>
+    <h1>We build brands<br>that move people.</h1>
+    <p>From impactful brand campaigns to high-converting digital strategies, we help lifestyle and fitness brands stand out, connect with their audiences, and grow.</p>
+    <div class="btns">
+      <button class="btn play" data-open="0"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 3v18l15-9z" fill="#000"/></svg>Watch our work</button>
+      <a class="btn info" href="#contact" style="color:#fff;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7v.5"/></svg>Get started</a>
+    </div>
+  </div>
+  <div class="rating">4K UHD</div>
+</section>
+
+<main id="rows"></main>
+
+<section class="sec" id="why"><div class="cols"><div><h2 class="big">More than marketing.<br>We build momentum.</h2><p class="lead">In fitness and lifestyle, generic campaigns get ignored. We pair cinematic storytelling with disciplined media buying to build lasting brand momentum.</p><ul class="pts"><li><b>Creative strategy backed by data.</b> Every frame and hook is engineered to convert.</li><li><b>Deep audience understanding.</b> We speak the native language of fitness and wellness culture.</li><li><b>Full-funnel optimization.</b> From the social feed all the way to customer acquisition.</li><li><b>Measurable business growth.</b> Transparent reporting on CAC, ROAS and real revenue.</li></ul></div><div class="stats"><div><h3>24 FPS</h3><p>Cinematic standard</p></div><div><h3>100%</h3><p>Tailored strategies</p></div><div><h3>4K UHD</h3><p>Production quality</p></div><div><h3>ROAS</h3><p>Performance first</p></div></div></div></section>
+<section class="sec" id="faq"><h2 class="big">Frequently asked questions</h2><div class="faq"><details><summary>What services does your agency offer?</summary><p>Full-spectrum digital marketing and creative production for lifestyle and fitness brands: brand strategy and positioning, performance marketing (Meta and Google Ads), social media marketing and community building, commercial video production and reels, influencer marketing, and high-converting websites and landing pages.</p></details><details><summary>Do you work with fitness and lifestyle brands?</summary><p>Yes, it is our primary domain. We specialise in gyms and fitness centres, sports nutrition, activewear, wellness, beauty, makeover studios and premium consumer lifestyle labels.</p></details><details><summary>How do you develop a marketing strategy?</summary><p>Four phases. Discover: an audit of your brand, competitors and audience. Strategize: creative concepts, media-buying architecture and KPIs. Create: video production, ad copy and landing pages. Optimize: data-driven scaling, A/B testing and continuous creative refinement.</p></details><details><summary>Can you manage our social media and paid campaigns?</summary><p>Yes, end to end: content calendars, community management, daily paid-ads optimization across Meta and Google, conversion tracking setup and weekly performance reviews.</p></details><details><summary>How do we get started?</summary><p>Submit the brief below or message us on Instagram at @24fpsproduction.in. We will schedule a discovery call to analyse your goals and propose a roadmap.</p></details></div></section>
+<section class="sec" id="contact"><h2 class="big">Let’s work together</h2><p class="lead">Ready to grow your brand? Share a short brief and our team will get in touch.</p>
+<form id="bf" class="bf"><label>Full name<input id="f1" required></label><label>Work email<input id="f2" type="email" required></label><label>Brand / company<input id="f3" required></label><label>Service needed<select id="f4" required><option value="">Choose one</option><option>Brand strategy</option><option>Performance marketing</option><option>Social media marketing</option><option>Creative video campaigns</option><option>Influencer marketing</option><option>Website &amp; conversion optimization</option><option>Full-scale growth engine</option></select></label><label class="w">Project objectives and scope<textarea id="f5" rows="4" required></textarea></label><button class="btn play">Send brief</button><p id="fm" class="lead" role="status"></p></form></section>
+<footer><div class="links"><a href="#r-clients">Clients</a><a href="#r-reels">Campaigns</a><a href="#r-svc">Services</a><a href="#why">Why us</a><a href="#faq">FAQ</a><a href="https://instagram.com/24fpsproduction.in" target="_blank" rel="noopener">Instagram</a></div><div>Questions? Message us on Instagram: @24fpsproduction.in</div><div>© 2026 24FPS PRODUCTION India · Lifestyle &amp; fitness digital marketing agency.</div></footer>
+
+<div class="modal" id="md" role="dialog" aria-modal="true" aria-label="Project details">
+  <div class="sheet">
+    <div class="screen"><canvas id="mc" width="880" height="495"></canvas><button class="x" id="cl" aria-label="Close">✕</button><div class="tc" id="tc">00:00:00:00</div></div>
+    <div class="sb"><div><h3 id="mt"></h3><span class="g" id="mm"></span><p id="md2"></p></div><dl id="mdl"></dl></div>
+  </div>
+</div>
+
+<script>
+// Set to an .mp4 URL to play real footage behind the hero and in the player.
+const HERO_VIDEO = "";
+
+const P=[["77 Fitness Studio — Brand Anthem", "77 Fitness Studio", "Reel", "Featured reel", "Fitness & Gyms", 8, 330, "A brand anthem for 77 Fitness Studio: cinematic, high-energy and built to make people walk through the door.", "Fitness, Brand film"], ["Aroos Makeover — Editorial Reel", "Aroos Makeover", "Reel", "Luxury showcase", "Beauty & Bridal", 320, 20, "An editorial reel for Aroos Makeover, crafted to show the artistry behind every bridal and beauty look.", "Beauty, Bridal"], ["Creative Lab — Dynamic Ads", "High On Fitness", "Reel", "Ad engine", "Activewear", 190, 265, "Dynamic ad creatives for High On Fitness, built and tested for scroll-stopping performance.", "Activewear, Ads"], ["Grand Opening Launch Blitz", "77 Fitness Vadapalani", "Reel", "Launch campaign", "Fitness & Gyms", 30, 350, "The launch campaign for the 77 Fitness Vadapalani opening: teasers, reels and paid push in one rollout.", "Fitness, Launch"], ["Veedu Vadagaiku", "Veedu Vadagaiku", "Client", "Trusted partner", "Client", 20, 90, "Veedu Vadagaiku works with 24FPS PRODUCTION on brand, video and digital growth for lifestyle and fitness audiences.", "Client"], ["77 Fitness Studio", "77 Fitness Studio", "Client", "Trusted partner", "Fitness & Gyms", 67, 137, "77 Fitness Studio works with 24FPS PRODUCTION on brand, video and digital growth for lifestyle and fitness audiences.", "Fitness & Gyms"], ["GNC India", "GNC India", "Client", "Trusted partner", "Sports nutrition", 114, 184, "GNC India works with 24FPS PRODUCTION on brand, video and digital growth for lifestyle and fitness audiences.", "Sports nutrition"], ["Aroos Makeover", "Aroos Makeover", "Client", "Trusted partner", "Beauty & Bridal", 161, 231, "Aroos Makeover works with 24FPS PRODUCTION on brand, video and digital growth for lifestyle and fitness audiences.", "Beauty & Bridal"], ["High On Fitness", "High On Fitness", "Client", "Trusted partner", "Activewear", 208, 278, "High On Fitness works with 24FPS PRODUCTION on brand, video and digital growth for lifestyle and fitness audiences.", "Activewear"], ["JP Holidays", "JP Holidays", "Client", "Trusted partner", "Client", 255, 325, "JP Holidays works with 24FPS PRODUCTION on brand, video and digital growth for lifestyle and fitness audiences.", "Client"], ["The Mighty Fitness World", "The Mighty Fitness World", "Client", "Trusted partner", "Fitness & Gyms", 302, 12, "The Mighty Fitness World works with 24FPS PRODUCTION on brand, video and digital growth for lifestyle and fitness audiences.", "Fitness & Gyms"], ["NB", "NB", "Client", "Trusted partner", "Client", 349, 59, "NB works with 24FPS PRODUCTION on brand, video and digital growth for lifestyle and fitness audiences.", "Client"], ["Commercial Video Production", "24FPS PRODUCTION", "Service", "Capability 1 of 9", "Services", 8, 78, "High-octane commercials, brand anthems, and dynamic social video ads engineered for maximum audience retention.", "Brand anthems, 4K TVC commercials, ad engine, launch campaigns"], ["Billing Software & POS", "24FPS PRODUCTION", "Service", "Capability 2 of 9", "Services", 200, 270, "Custom gym and retail billing software, automated recurring subscriptions, GST invoice engine and real-time ledger accounting.", "POS terminals, recurring subscriptions, GST billing, payment gateways"], ["Mobile App Development", "24FPS PRODUCTION", "Service", "Capability 3 of 9", "Services", 260, 330, "Bespoke iOS and Android apps with member onboarding, class booking, workout tracking and push engagement.", "iOS & Android, member portals, push engine, in-app booking"], ["Web Development & Portals", "24FPS PRODUCTION", "Service", "Capability 4 of 9", "Services", 215, 285, "Ultra-fast headless websites, custom client dashboards, SaaS portals and high-converting e-commerce stores.", "Custom web apps, client portals, sub-second speed, e-commerce"], ["Performance Marketing & Ads", "24FPS PRODUCTION", "Service", "Capability 5 of 9", "Services", 350, 60, "Data-backed paid acquisition across Meta, Google and YouTube that turns ad spend into predictable revenue.", "Meta & Instagram ads, YouTube strategy, hook testing, ROAS scaling"], ["Brand Strategy & Positioning", "24FPS PRODUCTION", "Service", "Capability 6 of 9", "Services", 30, 100, "Define your competitive moat, brand psychology, visual guidelines and positioning to dominate your niche.", "Brand identity, positioning playbook, visual systems, tone of voice"], ["Social Media Growth Engine", "24FPS PRODUCTION", "Service", "Capability 7 of 9", "Services", 300, 10, "Consistent short-form video production and posting cadence that builds loyal lifestyle and fitness communities.", "Daily reels, trend seeding, content calendar, community growth"], ["Influencer & Athlete Seeding", "24FPS PRODUCTION", "Service", "Capability 8 of 9", "Services", 150, 220, "Partner with fitness athletes and lifestyle creators who bring genuine cultural credibility and sales.", "Creator discovery, product seeding, athlete contracts, affiliate tracking"], ["Website & Funnel Optimization", "24FPS PRODUCTION", "Service", "Capability 9 of 9", "Services", 45, 115, "Landing page overhauls, A/B split testing and analytics funnels that double cold-traffic lead flow.", "Landing page CRO, A/B testing, analytics funnels, speed tuning"]];
+const R=[["Campaigns that break through","r-reels",[0,1,2,3]],["Trusted by leading brands","r-clients",[4,5,6,7,8,9,10,11]],["Everything your brand needs to scale","r-svc",[12,13,14,15,16,17,18,19,20]]];
+
+const bg=p=>`radial-gradient(120% 140% at 15% 10%,hsl(${p[5]} 80% 52%),transparent 60%),radial-gradient(100% 120% at 90% 90%,hsl(${p[6]} 75% 40%),#050505)`;
+const art=p=>`<div class="art" style="background:${bg(p)}"><span>${p[0]}</span></div>`;
+const rows=document.getElementById("rows");
+R.forEach(([t,id,ix,top])=>{
+  const s=document.createElement("section");s.className="row"+(top?" top":"");s.id=id;
+  s.innerHTML=`<h2>${t}</h2><div class="wrap"><button class="arr l" aria-label="Scroll left">‹</button><div class="track">${ix.map((i,k)=>{const p=P[i];
+    const m=`<div class="meta"><div><span class="dot f">▶</span><span class="dot">+</span><span class="dot">♥</span></div><div><em>${p[3]}</em><span>${p[4]}</span></div><p>${p[1]}</p></div>`;
+    return top?`<button class="card" data-open="${i}" data-s="${p.join(' ').toLowerCase()}"><span class="n">${k+1}</span><span class="pst">${art(p)}</span></button>`
+    :`<button class="card" data-open="${i}" data-s="${p.join(' ').toLowerCase()}">${art(p)}${m}</button>`}).join("")}</div><button class="arr r" aria-label="Scroll right">›</button></div>`;
+  rows.appendChild(s);
+  const tr=s.querySelector(".track");
+  s.querySelector(".l").onclick=()=>tr.scrollBy({left:-tr.clientWidth*.9,behavior:"smooth"});
+  s.querySelector(".r").onclick=()=>tr.scrollBy({left:tr.clientWidth*.9,behavior:"smooth"});
+});
+
+// Procedural "footage": drifting light leaks, anamorphic streak, grain
+function film(cv,h1,h2){
+  const x=cv.getContext("2d");let t=0,raf,stop=false;
+  const still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function draw(){
+    const w=cv.width,h=cv.height;x.globalCompositeOperation="source-over";x.fillStyle="#050505";x.fillRect(0,0,w,h);
+    x.globalCompositeOperation="screen";
+    for(let i=0;i<4;i++){
+      const a=t*.0004*(i+1)+i*1.7,cx=w*(.5+.4*Math.sin(a)),cy=h*(.5+.35*Math.cos(a*1.3)),r=Math.max(w,h)*(.35+.1*i/4);
+      const g=x.createRadialGradient(cx,cy,0,cx,cy,r);g.addColorStop(0,`hsla(${i%2?h2:h1},85%,50%,.55)`);g.addColorStop(1,"transparent");
+      x.fillStyle=g;x.fillRect(0,0,w,h);
+    }
+    const sy=h*(.55+.05*Math.sin(t*.0007));const sg=x.createLinearGradient(0,0,w,0);
+    sg.addColorStop(0,"transparent");sg.addColorStop(.5,"hsla(200,100%,85%,.5)");sg.addColorStop(1,"transparent");
+    x.fillStyle=sg;x.fillRect(0,sy,w,2);
+    x.globalCompositeOperation="source-over";x.fillStyle="#0007";x.fillRect(0,0,w,h*.08);x.fillRect(0,h*.92,w,h*.08);
+    for(let i=0;i<260;i++){x.fillStyle=`rgba(255,255,255,${Math.random()*.08})`;x.fillRect(Math.random()*w,Math.random()*h,1.5,1.5)}
+  }
+  function loop(ts){t=ts;draw();if(!stop&&!still)raf=requestAnimationFrame(loop)}
+  loop(performance.now());return()=>{stop=true;cancelAnimationFrame(raf)};
+}
+const hc=document.getElementById("hc");hc.width=960;hc.height=540;
+if(HERO_VIDEO){const v=document.createElement("video");Object.assign(v,{src:HERO_VIDEO,autoplay:true,muted:true,loop:true,playsInline:true});hc.replaceWith(v)}else film(hc,8,215);
+
+// Player modal with 24fps timecode
+const md=document.getElementById("md"),mc=document.getElementById("mc");let stopF=null,tcT=null,last=null;
+function open(i){
+  const p=P[i];last=document.activeElement;
+  mt.textContent=p[0];mm.textContent=`${p[3]} · ${p[4]}`;md2.textContent=p[7];
+  mdl.innerHTML=`<dt>Client: </dt><dd>${p[1]}</dd><dt>Type: </dt><dd>${p[2]}</dd><dt>Focus: </dt><dd>${p[8]}</dd>`;
+  md.classList.add("on");document.body.style.overflow="hidden";
+  stopF&&stopF();stopF=film(mc,p[5],p[6]);
+  const s=performance.now();clearInterval(tcT);
+  tcT=setInterval(()=>{const f=Math.floor((performance.now()-s)/1000*24),pd=n=>String(n).padStart(2,"0");
+    tc.textContent=`${pd(Math.floor(f/86400))}:${pd(Math.floor(f/1440)%60)}:${pd(Math.floor(f/24)%60)}:${pd(f%24)}`},41);
+  cl.focus();
+}
+function close(){md.classList.remove("on");document.body.style.overflow="";stopF&&stopF();clearInterval(tcT);last&&last.focus()}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-open]");if(b)open(+b.dataset.open);if(e.target===md)close()});
+cl.onclick=close;addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+
+bf.onsubmit=e=>{e.preventDefault();const t=`Hi 24FPS PRODUCTION! Brief from ${f1.value} (${f2.value}), ${f3.value}. Service: ${f4.value}. ${f5.value}`;
+  try{navigator.clipboard.writeText(t)}catch(_){}
+  fm.textContent="Your brief is copied. Instagram is opening: paste it into a DM to @24fpsproduction.in.";window.open("https://instagram.com/24fpsproduction.in","_blank","noopener")};
+// Header, search
+addEventListener("scroll",()=>hd.classList.toggle("solid",scrollY>50),{passive:true});
+sb.onclick=()=>{sr.classList.toggle("open");sr.classList.contains("open")&&q.focus()};
+q.oninput=()=>{const v=q.value.trim().toLowerCase();
+  document.querySelectorAll(".card").forEach(c=>c.style.display=!v||c.dataset.s.includes(v)?"":"none");
+  document.querySelectorAll(".row").forEach(r=>r.style.display=[...r.querySelectorAll(".card")].some(c=>c.style.display!=="none")?"":"none")};
+document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>{document.querySelectorAll("nav a").forEach(n=>n.classList.remove("on"));a.classList.add("on")});
+</script>
+</body>
+</html>
